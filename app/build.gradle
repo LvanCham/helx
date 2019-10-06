@@ -1,0 +1,122 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.cham.mytestarms"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //轮播图
+    implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.2'
+
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //Rxjava
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0-RC2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //权限管理
+    implementation ('com.github.tbruyelle:rxpermissions:0.10.2')  {
+        exclude module: 'rxjava'
+    }
+
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
+
+    //工具类
+    implementation 'com.blankj:utilcodex:1.25.9'
+    //Gson解析
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+
+    implementation ('com.squareup.retrofit2:adapter-rxjava2:2.6.0'){
+        exclude group: 'com.android.support'
+        exclude group: 'io.reactivex.rxjava2'
+        exclude module: 'rxjava'
+        exclude module: 'okhttp'
+        exclude module: 'retrofit'
+        exclude module: 'okio'
+    }
+
+    implementation ('com.squareup.retrofit2:converter-gson:2.6.1'){
+        exclude group: 'com.android.support'
+        exclude module: 'gson'
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+    }
+    //dagger2
+    implementation ('com.google.dagger:dagger:2.23.2'){
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.23.2'
+
+
+    implementation ('com.rxjava.rxhttp:rxhttp:1.2.1'){
+        exclude group: 'com.android.support'
+        exclude group:'com.google.code.gson'
+        exclude group: 'com.squareup.okhttp3'
+        exclude group: 'io.reactivex.rxjava2'
+        exclude group: 'com.squareup.retrofit2'
+    }
+   //注解处理器，生成RxHttp类，即可一条链发送请求
+    annotationProcessor ('com.rxjava.rxhttp:rxhttp-compiler:1.2.1'){
+        exclude group: 'com.android.support'
+        exclude group: 'io.reactivex.rxjava2'
+        exclude group: 'com.squareup.okhttp3'
+        exclude group: 'com.squareup.retrofit2'
+    }
+    //管理RxJava及生命周期，Activity/Fragment 销毁，自动关闭未完成的请求
+    implementation ('com.rxjava.rxlife:rxlife:1.1.0'){
+        exclude group: 'com.android.support'
+        exclude group: 'io.reactivex.rxjava2'
+    }
+
+
+    //指示器
+    implementation ('com.github.hackware1993:MagicIndicator:1.5.0'){
+        exclude group: 'com.android.support'
+    }
+
+    implementation 'javax.annotation:jsr250-api:1.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+}

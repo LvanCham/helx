@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Helx</string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">第二页</string>
+    <string name="title_notifications">第三页</string>
+</resources>
