@@ -18,6 +18,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.cham.helx.R;
 import com.cham.helx.mvp.ui.UserMvpActivity;
+import com.cham.helx.mvp.ui.VideoPlayActivity;
+import com.cham.helx.mvvm.MainAty;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,12 +30,17 @@ import butterknife.Unbinder;
 public class HomeFragment extends Fragment {
 
     private static String TAG = "HomeFragment";
+    @BindView(R.id.btn_video)
+    AppCompatButton btnVideo;
+    @BindView(R.id.btn_new_aty)
+    AppCompatButton btnNewAty;
     private Unbinder unbinder;
     @BindView(R.id.btn_chack)
     AppCompatButton btnChack;
     private HomeViewModel homeViewModel;
 
-    private   TextView textView;
+    private TextView textView;
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -50,7 +59,7 @@ public class HomeFragment extends Fragment {
         Log.e(TAG, "onCreateView: ");
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        unbinder=  ButterKnife.bind(this,root);
+        unbinder = ButterKnife.bind(this, root);
         textView = root.findViewById(R.id.text_home);
         initSth();
         return root;
@@ -72,8 +81,20 @@ public class HomeFragment extends Fragment {
 
         btnChack.setOnClickListener(v -> {
             homeViewModel.setData("AAA");
-            getActivity().startActivity(new Intent(getContext(), UserMvpActivity.class));
+            Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(), UserMvpActivity.class));
         });
+
+        btnVideo.setOnClickListener(v -> {
+            Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(), VideoPlayActivity.class));
+        });
+
+        btnNewAty.setOnClickListener(v -> {
+
+
+            Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(),MainAty.class));
+
+        });
+
     }
 
     @Override

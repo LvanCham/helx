@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_one"
+        android:icon="@drawable/sele_home"
+        android:title="主要" />
+
+    <item
+        android:id="@+id/menu_two"
+        android:icon="@drawable/sele_native"
+        android:title="思维" />
+
+    <item
+        android:id="@+id/menu_thr"
+        android:icon="@drawable/sele_inspiration"
+        android:title="模式" />
+</menu>

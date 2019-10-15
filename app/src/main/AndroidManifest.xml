@@ -7,7 +7,6 @@
 
     <application
         android:name=".base.BaseApplication"
-        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -24,6 +23,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvp.ui.UserMvpActivity" />
+        <activity android:name=".mvp.ui.VideoPlayActivity"
+            android:label="测试视频播放"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".mvvm.MainAty"/>
+
     </application>
 
 </manifest>

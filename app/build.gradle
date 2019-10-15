@@ -9,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -19,6 +20,21 @@ android {
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        jumboMode = true
+        preDexLibraries = false
+        additionalParameters = [
+                '--multi-dex',//多分包
+                '--set-max-idx-number=60000'//每个包内方法数上限
+        ]
+    }
+
+
+    dataBinding{
+         enabled =true
     }
 }
 
@@ -31,7 +47,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -119,4 +135,22 @@ dependencies {
 
     implementation 'javax.annotation:jsr250-api:1.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
+
+
+    //GSYVideo完整版引入
+    implementation 'com.shuyu:GSYVideoPlayer:7.1.0'
+
+
+    //fragmentationx
+    implementation  "me.yokeyword:fragmentationx:1.0.1"
+
+
+    //分包处理
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //RecyclerView BaseAdapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx'
+
+    //Jetpack
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 }

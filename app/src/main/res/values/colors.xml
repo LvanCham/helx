@@ -8,9 +8,11 @@
     <color name="tab_checked">#FF4081</color>
     <color name="tab_unchecked">#757575</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
 
-
+    <!--灰色背景-->
+    <color name="gray_bg">#F4F4F4</color>
 
     <color name="colorP1">#FFE2A0</color>
     <color name="colorP2">#C9FFA0</color>
@@ -22,4 +24,11 @@
     <color name="colorP8">#F5B488</color>
     <color name="colorP9">#DC8BA3</color>
     <color name="colorP10">#BE8BDC</color>
+
+    <color name="colorP11">#0D47A1</color>
+    <color name="colorP12">#1565C0</color>
+    <color name="colorP13">#1E88E5</color>
+    <color name="colorP14">#42A5F5</color>
+    <color name="colorP15">#90CAF9</color>
+
 </resources>

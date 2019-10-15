@@ -130,8 +130,6 @@ public class UserMvpActivity extends BaseMVPActivity<UserPresenter>  implements 
         mBannerData.add(new BannerBean(R.mipmap.splash_e));
         mBannerData.add(new BannerBean(R.mipmap.splash_r));
 
-
-
         for (int i = 0; i <30; i++) {
             mData.add("面對疾風吧");
         }
