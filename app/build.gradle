@@ -148,8 +148,12 @@ dependencies {
     //分包处理
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    //RecyclerView BaseAdapter
+    //RecyclerView BaseAdapter X
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx'
+
+
+    //Viewpager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0-beta05"
 
     //Jetpack
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'

@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -51,6 +52,18 @@ public class BaseViewHolder extends RecyclerView.ViewHolder  {
                                                   ViewGroup parent, int layoutId) {
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
+        BaseViewHolder holder = new BaseViewHolder(context, itemView);
+        return holder;
+    }
+
+
+    public static BaseViewHolder createViewHolder2(Context context,
+                                                  ViewGroup parent, int layoutId) {
+        View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
+                false);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        itemView.setLayoutParams(lp);
         BaseViewHolder holder = new BaseViewHolder(context, itemView);
         return holder;
     }
@@ -95,6 +108,12 @@ public class BaseViewHolder extends RecyclerView.ViewHolder  {
         return this;
     }
 
+    public BaseViewHolder setAppText(int viewId, String text)
+    {
+        AppCompatTextView tv = getView(viewId);
+        tv.setText(text);
+        return this;
+    }
     public BaseViewHolder setImageResource(int viewId, int resId)
     {
         ImageView view = getView(viewId);

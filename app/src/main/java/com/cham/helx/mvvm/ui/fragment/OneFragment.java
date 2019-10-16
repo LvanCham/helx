@@ -21,12 +21,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.cham.helx.R;
 import com.cham.helx.madapter.BaseViewHolder;
 import com.cham.helx.madapter.CommonAdapter;
 import com.cham.helx.madapter.MultipleItemAdapter;
+import com.cham.helx.madapter.Viewpager2Adapter;
 import com.cham.helx.mvp.entity.BannerBean;
 import com.cham.helx.mvp.ui.UserMvpActivity;
 import com.cham.helx.utils.ScaleTransitionPagerTitleView;
@@ -54,7 +56,8 @@ import me.yokeyword.fragmentation.SupportFragment;
  * Date: 2019/10/14
  * Author: Cham
  */
-public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.OnRefreshListener , MultipleItemAdapter.OnMulyipleBindView {
+public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.OnRefreshListener ,
+        MultipleItemAdapter.OnMulyipleBindView, Viewpager2Adapter.converHolder {
 
 
     @BindView(R.id.tv_base_loaction)
@@ -71,18 +74,15 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     RecyclerView rcyContent;
     @BindView(R.id.sw_layout)
     SwipeRefreshLayout swLayout;
-
     private   Unbinder unbinder;
-
     private Handler mHandler = new Handler(Looper.getMainLooper());
-
     private String[] titles = new String[]{"全部", "一年级",
             "二年级","三年级","四年级", "五年级",
             "六年级", "七年级", "八年级", "九年级"};
-
-    private  MultipleItemAdapter multipleItemAdapter;
     protected Context mContext;
-
+    private  MultipleItemAdapter multipleItemAdapter;
+    private ViewPager2 viewPager2 ;
+    private Viewpager2Adapter mViewpagerAdapter;
     /**
      * banner 数据
      * */
@@ -97,6 +97,11 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
      * 免费课程数据
      * */
     private List<String> mSpecialData;
+
+    /**
+     * 全部课程
+     * */
+    private List<String> mAllData;
 
     public static OneFragment newInstance() {
         Bundle args = new Bundle();
@@ -126,7 +131,6 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     }
 
     private void initVeiw(){
-
         //banner 数据
         mBannerData = new ArrayList<>();
         mBannerData.add(new BannerBean(R.mipmap.splash_o));
@@ -142,13 +146,16 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
         for (int i = 0; i <20 ; i++) {
             mFreeData.add("");
         }
-
         //专项课程
         mSpecialData=new ArrayList<>();
         for (int i = 0; i <8 ; i++) {
             mSpecialData.add("");
         }
-
+        //全部课程
+        mAllData = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            mAllData.add("");
+        }
 
         //导航栏
         CommonNavigator commonNavigator = new CommonNavigator(getActivity());
@@ -162,13 +169,13 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
             public IPagerTitleView getTitleView(Context context, final int index) {
                 SimplePagerTitleView simplePagerTitleView = new ScaleTransitionPagerTitleView(context);
                 simplePagerTitleView.setText(titles[index]);
-                simplePagerTitleView.setTextSize(20);
-                simplePagerTitleView.setNormalColor(Color.BLACK);
-                simplePagerTitleView.setSelectedColor(getResources().getColor(R.color.colorP13));
+                simplePagerTitleView.setTextSize(22);
+                simplePagerTitleView.setNormalColor(getResources().getColor(R.color.tab_unchecked));
+                simplePagerTitleView.setSelectedColor(getResources().getColor(R.color.black));
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        viewPager2.setCurrentItem(index);
                     }
                 });
                 return simplePagerTitleView;
@@ -177,13 +184,13 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
             public IPagerIndicator getIndicator(Context context) {
                 LinePagerIndicator indicator = new LinePagerIndicator(context);
                 indicator.setMode(LinePagerIndicator.MODE_EXACTLY);
-                indicator.setLineHeight(UIUtil.dip2px(context, 3));
-                indicator.setLineWidth(UIUtil.dip2px(context, 20));
-                indicator.setRoundRadius(UIUtil.dip2px(context, 3));
+                indicator.setLineHeight(UIUtil.dip2px(context, 8));
+                indicator.setLineWidth(UIUtil.dip2px(context, 30));
+                indicator.setRoundRadius(UIUtil.dip2px(context, 5));
                 indicator.setStartInterpolator(new AccelerateInterpolator());
-                indicator.setEndInterpolator(new DecelerateInterpolator(2.0f));
-                indicator.setColors(getResources().getColor(R.color.colorP13));
-                return null;
+                indicator.setEndInterpolator(new DecelerateInterpolator(3.0f));
+                indicator.setColors(getResources().getColor(R.color.colorP9));
+                return indicator;
             }
         });
         mMagicIndicator.setNavigator(commonNavigator);
@@ -214,6 +221,12 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
         multipleItemAdapter.setOnMulyipleBindView(this);
         rcyContent.setAdapter(multipleItemAdapter);
         rcyContent.setHasFixedSize(true);
+
+        /**
+         * viewpager2 Adapter
+         * */
+        mViewpagerAdapter = new Viewpager2Adapter(mContext,titles,R.layout.item_rcy);
+        mViewpagerAdapter.setcConverHolder(this);
     }
 
     @Override
@@ -259,13 +272,31 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
 
             }
         });
-
         mRcyItem.setHasFixedSize(true);
     }
 
     @Override
     public void onBindContentClass(BaseViewHolder baseViewHolder, int position) {
-
+        viewPager2 = baseViewHolder.getView(R.id.viewpager2);
+        viewPager2.setAdapter(mViewpagerAdapter);
+        // 注册页面变化的回调接口
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                mMagicIndicator.onPageSelected(position);
+            }
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                mMagicIndicator.onPageScrolled(position,positionOffset,positionOffsetPixels);
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+                mMagicIndicator.onPageScrollStateChanged(state);
+            }
+        });
     }
 
     @Override
@@ -273,12 +304,27 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
         RecyclerView mRcyItem = baseViewHolder.getView(R.id.rcy_special);
         mRcyItem.setLayoutManager(new GridLayoutManager(getActivity(),2));
         mRcyItem.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_special_content, mSpecialData) {
+            @Override
+            public void convert(BaseViewHolder holder, String s, int pot) {
 
+            }
+        });
+    }
+
+    @Override
+    public void convert(BaseViewHolder holder, int position) {
+        holder.setAppText(R.id.tv__rcy_title,titles[position]);
+        RecyclerView mRcyItem = holder.getView(R.id.item_rcy);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRcyItem.setLayoutManager(linearLayoutManager);
+        mRcyItem.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_all_tem, mAllData) {
             @Override
             public void convert(BaseViewHolder holder, String s, int pot) {
 
             }
         });
 
+        mRcyItem.setHasFixedSize(true);
     }
 }
