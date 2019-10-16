@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_one"
         android:icon="@drawable/sele_home"
-        android:title="主要" />
+        android:title="主页" />
 
     <item
         android:id="@+id/menu_two"

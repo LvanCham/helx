@@ -170,6 +170,8 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
                 SimplePagerTitleView simplePagerTitleView = new ScaleTransitionPagerTitleView(context);
                 simplePagerTitleView.setText(titles[index]);
                 simplePagerTitleView.setTextSize(22);
+
+                simplePagerTitleView.getPaint().setFakeBoldText(true);
                 simplePagerTitleView.setNormalColor(getResources().getColor(R.color.tab_unchecked));
                 simplePagerTitleView.setSelectedColor(getResources().getColor(R.color.black));
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
@@ -189,7 +191,7 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
                 indicator.setRoundRadius(UIUtil.dip2px(context, 5));
                 indicator.setStartInterpolator(new AccelerateInterpolator());
                 indicator.setEndInterpolator(new DecelerateInterpolator(3.0f));
-                indicator.setColors(getResources().getColor(R.color.colorP9));
+                indicator.setColors(getResources().getColor(R.color.colorP5));
                 return indicator;
             }
         });
