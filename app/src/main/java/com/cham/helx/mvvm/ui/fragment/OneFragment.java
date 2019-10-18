@@ -1,6 +1,7 @@
 package com.cham.helx.mvvm.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,7 @@ import com.cham.helx.madapter.MultipleItemAdapter;
 import com.cham.helx.madapter.Viewpager2Adapter;
 import com.cham.helx.mvp.entity.BannerBean;
 import com.cham.helx.mvp.ui.UserMvpActivity;
+import com.cham.helx.mvvm.ui.activity.DetailsActivity;
 import com.cham.helx.utils.ScaleTransitionPagerTitleView;
 import com.stx.xhb.androidx.XBanner;
 
@@ -170,7 +172,6 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
                 SimplePagerTitleView simplePagerTitleView = new ScaleTransitionPagerTitleView(context);
                 simplePagerTitleView.setText(titles[index]);
                 simplePagerTitleView.setTextSize(22);
-
                 simplePagerTitleView.getPaint().setFakeBoldText(true);
                 simplePagerTitleView.setNormalColor(getResources().getColor(R.color.tab_unchecked));
                 simplePagerTitleView.setSelectedColor(getResources().getColor(R.color.black));
@@ -191,7 +192,7 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
                 indicator.setRoundRadius(UIUtil.dip2px(context, 5));
                 indicator.setStartInterpolator(new AccelerateInterpolator());
                 indicator.setEndInterpolator(new DecelerateInterpolator(3.0f));
-                indicator.setColors(getResources().getColor(R.color.colorP5));
+                indicator.setColors(getResources().getColor(R.color.colorAccent));
                 return indicator;
             }
         });
@@ -210,11 +211,7 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
         //设置触发刷新的距离
         swLayout.setDistanceToTriggerSync(200);
 
-
         multipleItemAdapter=new MultipleItemAdapter(mContext);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        rcyContent.setLayoutManager(linearLayoutManager);
         multipleItemAdapter.setBannerView(R.layout.item_banner);
         multipleItemAdapter.setFreeClassVeiwView(R.layout.item_free);
         multipleItemAdapter.setContentClassView(R.layout.item_ontent_class);
@@ -253,24 +250,22 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     public void onBindBanner(BaseViewHolder baseViewHolder, int position) {
         XBanner mXBanner = baseViewHolder.getView(R.id.xbanner);
         mXBanner.setBannerData(mBannerData);
-        mXBanner.loadImage(new XBanner.XBannerAdapter() {
-            @Override
-            public void loadBanner(XBanner banner, Object model, View view, int position) {
-                Glide.with(mContext).load(((BannerBean) model).getXBannerUrl()).into((ImageView) view);
-            }
-        });
+        mXBanner.loadImage((banner, model, view, position1) ->
+                Glide.with(mContext).load(((BannerBean) model).getXBannerUrl()).into((ImageView) view));
     }
 
     @Override
     public void onBindFreeClass(BaseViewHolder baseViewHolder, int position) {
         RecyclerView mRcyItem = baseViewHolder.getView(R.id.rcy_free);
-        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext());
-        linearLayoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mRcyItem.setLayoutManager(linearLayoutManager2);
-
         mRcyItem.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_free_class, mFreeData) {
             @Override
             public void convert(BaseViewHolder holder, String s, int pot) {
+
+                holder.itemView.setOnClickListener(v -> {
+
+                    mContext.startActivity(new Intent(mContext, DetailsActivity.class));
+
+                });
 
             }
         });
@@ -304,7 +299,6 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     @Override
     public void onBindSpecialClass(BaseViewHolder baseViewHolder, int position) {
         RecyclerView mRcyItem = baseViewHolder.getView(R.id.rcy_special);
-        mRcyItem.setLayoutManager(new GridLayoutManager(getActivity(),2));
         mRcyItem.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_special_content, mSpecialData) {
             @Override
             public void convert(BaseViewHolder holder, String s, int pot) {
@@ -317,16 +311,12 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     public void convert(BaseViewHolder holder, int position) {
         holder.setAppText(R.id.tv__rcy_title,titles[position]);
         RecyclerView mRcyItem = holder.getView(R.id.item_rcy);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRcyItem.setLayoutManager(linearLayoutManager);
         mRcyItem.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_all_tem, mAllData) {
             @Override
             public void convert(BaseViewHolder holder, String s, int pot) {
-
+                holder.setAppText(R.id.tv_naem,titles[position]);
             }
         });
-
         mRcyItem.setHasFixedSize(true);
     }
 }

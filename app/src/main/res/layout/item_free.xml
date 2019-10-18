@@ -45,7 +45,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_free" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_free"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

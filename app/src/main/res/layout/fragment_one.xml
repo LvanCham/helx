@@ -46,7 +46,6 @@
             app:layout_constraintStart_toEndOf="@+id/tv_base_loaction"
             app:layout_constraintTop_toTopOf="@+id/tv_base_loaction"
             android:layout_marginEnd="20dp"
-           android:focusableInTouchMode="false"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -82,6 +81,8 @@
                 android:id="@+id/rcy_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
                 android:scrollbars="vertical"
                />
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

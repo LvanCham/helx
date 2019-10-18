@@ -7,8 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
+import com.cham.helx.BR;
 import com.cham.helx.R;
+import com.cham.helx.mvvm.bean.Test;
 
 import me.yokeyword.fragmentation.SupportFragment;
 
@@ -18,7 +22,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * Author: Cham
  */
 public class ThrFragment extends SupportFragment {
-
+    protected ViewDataBinding binding;
     public static ThrFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -32,7 +36,27 @@ public class ThrFragment extends SupportFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragemtn_thr, container, false);
-        return view;
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragemtn_thr, container, false);
+        initData();
+        return binding.getRoot();
+    }
+    private void initData(){
+        Test test = new Test();
+        test.setS1("123456");
+        binding.setVariable(BR.test,test);
+        binding.executePendingBindings();
+
+
+
+
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(binding!=null){
+            binding=null;
+        }
     }
 }

@@ -28,8 +28,13 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".mvvm.MainAty"/>
+        <activity android:name=".mvvm.MainAty"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:configChanges="orientation|keyboardHidden"/>
 
+        <activity android:name=".mvvm.ui.activity.DetailsActivity"
+            android:label="详情页"
+            />
     </application>
 
 </manifest>
