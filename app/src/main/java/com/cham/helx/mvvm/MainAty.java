@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.blankj.utilcode.util.BarUtils;
 import com.cham.helx.R;
 import com.cham.helx.mvvm.ui.fragment.OneFragment;
+import com.cham.helx.mvvm.ui.fragment.TestFragment;
 import com.cham.helx.mvvm.ui.fragment.ThrFragment;
 import com.cham.helx.mvvm.ui.fragment.TwoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -62,7 +63,7 @@ public class MainAty extends SupportActivity  {
         if (findFragment(OneFragment.class) == null) {
             mFragments[0] = OneFragment.newInstance();
             mFragments[1] = TwoFragment.newInstance();
-            mFragments[2] = ThrFragment.newInstance();
+            mFragments[2] = TestFragment.newInstance();
 
            loadMultipleRootFragment(R.id.fl_content, 0,
                     mFragments[0],
@@ -71,7 +72,7 @@ public class MainAty extends SupportActivity  {
         } else {
             mFragments[0] = findFragment(OneFragment.class);
             mFragments[1] = findFragment(TwoFragment.class);
-            mFragments[2] = findFragment(ThrFragment.class);
+            mFragments[2] = findFragment(TestFragment.class);
         }
         bottomNavi.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -101,7 +101,7 @@ public class DetailsActivity extends SupportActivity {
 
 
     private Viewpager2FragmentAdapter mViewpagerAdapter;
-    private List<String> mAllData;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,6 +116,7 @@ public class DetailsActivity extends SupportActivity {
 
 
     private void initVeiw() {
+        //
         mFragmentList = new ArrayList<>();
         mFragmentList.add(IntroFragment.newInstance());
         mFragmentList.add(CourseFragment.newInstance());
@@ -123,10 +124,7 @@ public class DetailsActivity extends SupportActivity {
         mViewpagerAdapter = new Viewpager2FragmentAdapter(this,mFragmentList);
 
 
-        mAllData = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            mAllData.add("");
-        }
+
         detailsBean = new DetailsBean();
         detailsBean.setIvHome(R.mipmap.ic_share);
         detailsBean.setIvCostomer(R.mipmap.ic_back);
@@ -177,6 +175,7 @@ public class DetailsActivity extends SupportActivity {
         detailsBean.setCommonNavigator(commonNavigator);
         detailsBinding.setDetails(detailsBean);
 
+
         detailsBinding.vp2Details.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -198,14 +197,8 @@ public class DetailsActivity extends SupportActivity {
         });
 
 
+        detailsBinding.ivBack.setOnClickListener(v -> finish());
 
-        detailsBinding.btnBuyNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //刷新
-                mViewpagerAdapter.notifyDataSetChanged();
-            }
-        });
 
     }
 
