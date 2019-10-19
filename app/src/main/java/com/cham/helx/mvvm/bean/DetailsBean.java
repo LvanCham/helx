@@ -67,62 +67,24 @@ public class DetailsBean {
     private int ivShoppingcar;
 
 
-    public String[] getTitles() {
-        return titles;
+    public CommonNavigator getCommonNavigator() {
+        return commonNavigator;
     }
 
-    public void setTitles(String[] titles) {
-        this.titles = titles;
+    public void setCommonNavigator(CommonNavigator commonNavigator) {
+        this.commonNavigator = commonNavigator;
     }
 
-    private String[] titles = new String[]{"简介", "课程", "评论"};
+    private CommonNavigator commonNavigator ;
 
 
-    @BindingAdapter({"app:setNavigator"})
-    public  static  void setCommonNavigator(MagicIndicator magicIndicator,String[] titles){
 
-        //导航栏
-        CommonNavigator commonNavigator = new CommonNavigator(magicIndicator.getContext());
-        //ture 即标题平分屏幕宽度的模式
-        commonNavigator.setAdjustMode(true);
-        commonNavigator.setAdapter(new CommonNavigatorAdapter() {
-            @Override
-            public int getCount() {
-                return titles == null ? 0 : titles.length;
-            }
 
-            @Override
-            public IPagerTitleView getTitleView(Context context, final int index) {
-                SimplePagerTitleView simplePagerTitleView = new ScaleTransitionPagerTitleView(context);
-                simplePagerTitleView.setText(titles[index]);
-                simplePagerTitleView.setTextSize(22);
-                simplePagerTitleView.getPaint().setFakeBoldText(true);
-                simplePagerTitleView.setNormalColor(magicIndicator.getContext().getResources().getColor(R.color.tab_unchecked));
-                simplePagerTitleView.setSelectedColor(magicIndicator.getContext().getResources().getColor(R.color.black));
-                simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
 
-                    }
-                });
-                return simplePagerTitleView;
-            }
 
-            @Override
-            public IPagerIndicator getIndicator(Context context) {
-                LinePagerIndicator indicator = new LinePagerIndicator(context);
-                indicator.setMode(LinePagerIndicator.MODE_EXACTLY);
-                indicator.setLineHeight(UIUtil.dip2px(context, 8));
-                indicator.setLineWidth(UIUtil.dip2px(context, 30));
-                indicator.setRoundRadius(UIUtil.dip2px(context, 5));
-                indicator.setStartInterpolator(new AccelerateInterpolator());
-                indicator.setEndInterpolator(new DecelerateInterpolator(3.0f));
-                indicator.setColors(magicIndicator.getContext().getResources().getColor(R.color.colorAccent));
-                return indicator;
-            }
-        });
+    @BindingAdapter({"setnavigator"})
+    public  static  void setCommonNavigator(MagicIndicator magicIndicator,CommonNavigator commonNavigator){
         magicIndicator.setNavigator(commonNavigator);
-
     }
 
 

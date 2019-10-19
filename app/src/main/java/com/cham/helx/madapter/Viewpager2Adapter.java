@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class Viewpager2Adapter  extends RecyclerView.Adapter<BaseViewHolder> {
 
 
-
     private Context mContext;
-    private BaseViewHolder viewViewHolder;
     private String[] mTitle;
     private int mLayoutId ;
 
@@ -27,12 +25,10 @@ public class Viewpager2Adapter  extends RecyclerView.Adapter<BaseViewHolder> {
         this.mLayoutId=mLayoutId;
     }
 
-
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        viewViewHolder =BaseViewHolder.createViewHolder2(mContext, parent, mLayoutId);
-        return viewViewHolder;
+        return BaseViewHolder.createViewHolder2(mContext, parent, mLayoutId);
     }
 
     @Override
