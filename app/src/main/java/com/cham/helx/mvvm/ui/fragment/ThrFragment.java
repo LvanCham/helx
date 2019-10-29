@@ -18,7 +18,7 @@ import androidx.databinding.ViewDataBinding;
 
 import com.cham.helx.BR;
 import com.cham.helx.R;
-import com.cham.helx.mvvm.bean.Test;
+import com.cham.helx.mvvm.test.Test;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,8 +81,6 @@ public class ThrFragment extends SupportFragment  {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 binding.setVariable(BR.test, test);
-
-
                 binding.executePendingBindings();
             }
 

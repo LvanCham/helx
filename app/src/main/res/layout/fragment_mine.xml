@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/title_cas"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/colorP2"
+            >
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/title_cas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true">
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_titel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/colorP2"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_content"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="220dp"
+
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card_csly1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_all_order1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="10dp"
+                        android:text="全部订单"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_all_order_o1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="全部订单 >"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_all_order1"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_i11"
+                        android:layout_width="30dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@mipmap/motorbike"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toBottomOf="@id/tv_all_order1" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_i21"
+                        android:layout_width="30dp"
+                        android:layout_height="32dp"
+                        android:background="@mipmap/motorbike"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_i11"
+                        app:layout_constraintLeft_toRightOf="@id/iv_i11"
+                        app:layout_constraintRight_toLeftOf="@id/iv_i31"
+                        app:layout_constraintTop_toTopOf="@id/iv_i11"
+
+                        />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_i31"
+                        android:layout_width="30dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="40dp"
+                        android:background="@mipmap/motorbike"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_i11"
+                        app:layout_constraintEnd_toEndOf="@id/card_csly1"
+                        app:layout_constraintTop_toTopOf="@id/iv_i11" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_i11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="待付款"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_i11"
+                        app:layout_constraintStart_toStartOf="@+id/iv_i11"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_i11" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_i21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="已购买"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_i21"
+                        app:layout_constraintStart_toStartOf="@+id/iv_i21"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_i21" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_i31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="待评价"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_i31"
+                        app:layout_constraintStart_toStartOf="@+id/iv_i31"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_i31" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tv_card"
+                android:layout_width="match_parent"
+                android:layout_height="242dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/card_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                app:cardCornerRadius="10dp"
+               >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:text="更多功能"
+                        android:textStyle="bold"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cs_conpon"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="15dp">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_conpon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@mipmap/motorbike"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/iv_conpon"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_conpon"
+                    app:layout_constraintStart_toEndOf="@id/iv_conpon"
+                    android:text="优惠券"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:layout_marginStart="12dp"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cs_collect"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@id/cs_conpon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_collect"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@mipmap/motorbike"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="15dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/iv_collect"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_collect"
+                    app:layout_constraintStart_toEndOf="@id/iv_collect"
+                    android:text="我的收藏"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:layout_marginStart="12dp"
+                    />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cs_foodprint"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@id/cs_collect"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_foodprint"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@mipmap/motorbike"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/iv_foodprint"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_foodprint"
+                    app:layout_constraintStart_toEndOf="@id/iv_foodprint"
+                    android:text="我的足迹"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:layout_marginStart="12dp"
+                    />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

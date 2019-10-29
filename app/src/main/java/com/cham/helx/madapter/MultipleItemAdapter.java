@@ -18,9 +18,6 @@ import com.cham.helx.R;
  */
 public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
 
-
-
-
     public MultipleItemAdapter(Context context){
         mContext=context;
     }
@@ -43,7 +40,7 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
     public static final int TYPE_FOOTER = 105;
 
 
-    private View bannerView,freeClassVeiw,
+    private int bannerView,freeClassVeiw,
             contentClassView,specialClassView,
             footerView;
 
@@ -52,42 +49,32 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
             ContentViewHolder,SpecialViewHolder,
             FooterViewHolder;
 
-    /**
-     * is Load more data
-     * */
-    private boolean hasMore = true;
-
-    private ViewGroup mParent ;
     private Context mContext;
 
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        mParent= parent;
-        if(bannerView!=null && viewType ==TYPE_BANNER){
-            BannerViewHolder = BaseViewHolder.createViewHolder(mContext,parent, R.layout.item_banner);
+        if(bannerView!=0 && viewType ==TYPE_BANNER){
+            BannerViewHolder = BaseViewHolder.createViewHolder(mContext,parent, bannerView);
             return BannerViewHolder;
-        }else if(freeClassVeiw!=null && viewType ==TYPE_CLASS_FREE){
-            FreeViewHolder = BaseViewHolder.createViewHolder(mContext,parent,R.layout.item_free);
+        }else if(freeClassVeiw!=0 && viewType ==TYPE_CLASS_FREE){
+            FreeViewHolder = BaseViewHolder.createViewHolder(mContext,parent,freeClassVeiw);
             return FreeViewHolder;
-        }else if(contentClassView!=null && viewType ==TYPE_CLASS_CONTENT){
-            ContentViewHolder = BaseViewHolder.createViewHolder(mContext,parent,R.layout.item_ontent_class);
+        }else if(contentClassView!=0 && viewType ==TYPE_CLASS_CONTENT){
+            ContentViewHolder = BaseViewHolder.createViewHolder(mContext,parent,contentClassView);
             return ContentViewHolder;
-        }else if(specialClassView!=null && viewType ==TYPE_CLASS_SPECIAL){
-            SpecialViewHolder = BaseViewHolder.createViewHolder(mContext,parent,R.layout.item_special_class);
+        }else if(specialClassView!=0 && viewType ==TYPE_CLASS_SPECIAL){
+            SpecialViewHolder = BaseViewHolder.createViewHolder(mContext,parent,specialClassView);
             return SpecialViewHolder;
         }else {
-            FooterViewHolder = BaseViewHolder.createViewHolder(mContext,parent,R.layout.item_home_footer);
+            FooterViewHolder = BaseViewHolder.createViewHolder(mContext,parent,footerView);
             return FooterViewHolder;
         }
-        
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
-
         if (getItemViewType(position) == TYPE_BANNER) {
           onMulyipleBindView.onBindBanner(holder,position);
         }else if(getItemViewType(position) == TYPE_CLASS_FREE){
@@ -97,40 +84,33 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
         }else if(getItemViewType(position) == TYPE_CLASS_SPECIAL){
             onMulyipleBindView.onBindSpecialClass(holder,position);
         }
-
     }
 
     @Override
     public int getItemCount() {
         int count =0;
-        if(bannerView!=null){
-            count++;
-        }
-        if(freeClassVeiw!=null){
-            count++;
-        }
-        if(contentClassView!=null){
-            count++;
-        }
-        if (specialClassView!=null){
-            count++;
-        }
-        if (footerView!=null){
-            count++;
-        }
+        if(bannerView!=0){
+            count++; }
+        if(freeClassVeiw!=0){
+            count++; }
+        if(contentClassView!=0){
+            count++; }
+        if (specialClassView!=0){
+            count++; }
+        if (footerView!=0){
+            count++; }
         return count;
     }
 
     @Override
     public int getItemViewType(int position) {
-       if(bannerView != null && position == 0){
+       if(bannerView != 0 && position == 0){
            return TYPE_BANNER;
-       }else
-        if(freeClassVeiw!=null && position == 1){
+       }else if(freeClassVeiw!=0 && position == 1){
             return TYPE_CLASS_FREE;
-        }else if(contentClassView!=null && position == 2){
+        }else if(contentClassView!=0 && position == 2){
             return TYPE_CLASS_CONTENT;
-        }else if(specialClassView!=null && position == 3){
+        }else if(specialClassView!=0 && position == 3){
             return TYPE_CLASS_SPECIAL;
         }else {
             return TYPE_FOOTER;
@@ -144,35 +124,35 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
         if (mContext == null && layoutId < 0) {
             return;
         }
-        bannerView =LayoutInflater.from(mContext).inflate(layoutId,null);
+        bannerView =layoutId;
         notifyItemInserted(0);
     }
     public void setFreeClassVeiwView( int layoutId){
         if (mContext == null && layoutId < 0) {
             return;
         }
-        freeClassVeiw =LayoutInflater.from(mContext).inflate(layoutId,null);
+        freeClassVeiw =layoutId;
         notifyItemInserted(1);
     }
     public void setContentClassView( int layoutId){
         if (mContext == null && layoutId < 0) {
             return;
         }
-        contentClassView =LayoutInflater.from(mContext).inflate(layoutId,null);
+        contentClassView =layoutId;
         notifyItemInserted(2);
     }
     public void setSpecialClassView(int layoutId){
         if (mContext == null && layoutId < 0) {
             return;
         }
-        specialClassView =LayoutInflater.from(mContext).inflate(layoutId,null);
+        specialClassView =layoutId;
         notifyItemInserted(3);
     }
     public void setFooterView( int layoutId){
         if (mContext == null && layoutId < 0) {
             return;
         }
-        footerView =LayoutInflater.from(mContext).inflate(layoutId,null);
+        footerView =layoutId;
         notifyItemInserted(getItemCount()-1);
     }
 
@@ -185,8 +165,6 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
         void onBindFreeClass( BaseViewHolder baseViewHolder, int position);
         void onBindContentClass( BaseViewHolder baseViewHolder, int position);
         void onBindSpecialClass( BaseViewHolder baseViewHolder, int position);
-
-
     }
 
 }

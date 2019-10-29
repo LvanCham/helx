@@ -26,7 +26,6 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * Hello World
  * Date: 2019/5/22
- * Author: Cham
  */
 public class BaseViewHolder extends RecyclerView.ViewHolder  {
 
@@ -57,6 +56,9 @@ public class BaseViewHolder extends RecyclerView.ViewHolder  {
     }
 
 
+    /**
+     * viewpager2 用
+     * */
     public static BaseViewHolder createViewHolder2(Context context,
                                                   ViewGroup parent, int layoutId) {
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,

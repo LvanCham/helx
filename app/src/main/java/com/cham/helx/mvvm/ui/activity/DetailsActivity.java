@@ -1,39 +1,25 @@
 package com.cham.helx.mvvm.ui.activity;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.cham.helx.R;
 import com.cham.helx.databinding.ActivityDetailsBinding;
-import com.cham.helx.madapter.BaseViewHolder;
-import com.cham.helx.madapter.CommonAdapter;
-import com.cham.helx.madapter.Viewpager2Adapter;
 import com.cham.helx.madapter.Viewpager2FragmentAdapter;
+import com.cham.helx.mvvm.base.BaseMvvmActivity;
 import com.cham.helx.mvvm.bean.DetailsBean;
 import com.cham.helx.mvvm.ui.fragment.CommentFragment;
 import com.cham.helx.mvvm.ui.fragment.CourseFragment;
 import com.cham.helx.mvvm.ui.fragment.IntroFragment;
 import com.cham.helx.utils.ScaleTransitionPagerTitleView;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.elvishew.xlog.XLog;
 
-import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.buildins.UIUtil;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
@@ -45,9 +31,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.Simple
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import me.yokeyword.fragmentation.SupportActivity;
 
 /**
  * Hello World
@@ -55,75 +38,41 @@ import me.yokeyword.fragmentation.SupportActivity;
  * 详情页
  * Author: Cham
  */
-public class DetailsActivity extends SupportActivity {
+public class DetailsActivity extends BaseMvvmActivity<ActivityDetailsBinding> {
 
 
-    @BindView(R.id.csl_title)
-    ConstraintLayout cslTitle;
-    @BindView(R.id.tv_details)
-    AppCompatImageView tvDetails;
-    @BindView(R.id.dtl_ctb)
-    CollapsingToolbarLayout dtlCtb;
-    @BindView(R.id.magic_details)
-    MagicIndicator magicDetails;
-    @BindView(R.id.dtl_appbar)
-    AppBarLayout dtlAppbar;
-
-    @BindView(R.id.g_line)
-    Guideline gLine;
-    @BindView(R.id.iv_home)
-    AppCompatImageView ivHome;
-    @BindView(R.id.iv_customer)
-    AppCompatImageView ivCustomer;
-    @BindView(R.id.iv_shoppingcart)
-    AppCompatImageView ivShoppingcart;
-    @BindView(R.id.tv_home)
-    AppCompatTextView tvHome;
-    @BindView(R.id.tv_customer)
-    AppCompatTextView tvCustomer;
-    @BindView(R.id.tv_shoppingcart)
-    AppCompatTextView tvShoppingcart;
-    @BindView(R.id.btn_add_shoppongcart)
-    AppCompatButton btnAddShoppongcart;
-    @BindView(R.id.btn_buy_now)
-    AppCompatButton btnBuyNow;
-    @BindView(R.id.csl_bottom)
-    ConstraintLayout cslBottom;
-    @BindView(R.id.vp2_details)
-    ViewPager2 vp2Details;
 
     private String[] titles = new String[]{"简介", "课程", "评论"};
-
     private List<Fragment> mFragmentList;
-
-    private ActivityDetailsBinding detailsBinding;
     private DetailsBean detailsBean;
-
-
     private Viewpager2FragmentAdapter mViewpagerAdapter;
 
+    @Override
+    public int onLayout() {
+        return R.layout.activity_details;
+    }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //黑色字体
+    public void initView() {
         BarUtils.setStatusBarLightMode(this, true);
         BarUtils.setStatusBarColor(this, getResources().getColor(R.color.white));
-        detailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details);
-        ButterKnife.bind(this);
         initVeiw();
     }
 
 
     private void initVeiw() {
+
+        /**
+         * 宽度适配后 pt  = px
+         * */
+        XLog.e(AdaptScreenUtils.px2Pt(10));
+        XLog.e(AdaptScreenUtils.pt2Px(10));
         //
         mFragmentList = new ArrayList<>();
         mFragmentList.add(IntroFragment.newInstance());
         mFragmentList.add(CourseFragment.newInstance());
         mFragmentList.add(CommentFragment.newInstance());
         mViewpagerAdapter = new Viewpager2FragmentAdapter(this,mFragmentList);
-
-
 
         detailsBean = new DetailsBean();
         detailsBean.setIvHome(R.mipmap.ic_share);
@@ -152,7 +101,7 @@ public class DetailsActivity extends SupportActivity {
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        detailsBinding.vp2Details.setCurrentItem(index);
+                        binding.vp2Details.setCurrentItem(index);
                     }
                 });
                 return simplePagerTitleView;
@@ -171,33 +120,33 @@ public class DetailsActivity extends SupportActivity {
             }
         });
 
-        detailsBinding.vp2Details.setAdapter(mViewpagerAdapter);
+        binding.vp2Details.setAdapter(mViewpagerAdapter);
         detailsBean.setCommonNavigator(commonNavigator);
-        detailsBinding.setDetails(detailsBean);
+        binding.setDetails(detailsBean);
 
 
-        detailsBinding.vp2Details.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        binding.vp2Details.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                detailsBinding.magicDetails.onPageScrolled(position,positionOffset,positionOffsetPixels);
+                binding.magicDetails.onPageScrolled(position,positionOffset,positionOffsetPixels);
             }
 
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                detailsBinding.magicDetails.onPageSelected(position);
+                binding.magicDetails.onPageSelected(position);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
-                detailsBinding.magicDetails.onPageScrollStateChanged(state);
+                binding.magicDetails.onPageScrollStateChanged(state);
             }
         });
 
 
-        detailsBinding.ivBack.setOnClickListener(v -> finish());
+        binding.ivBack.setOnClickListener(v -> finish());
 
 
     }

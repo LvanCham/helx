@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.elvishew.xlog.XLog;
+
 public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
@@ -19,5 +21,11 @@ public class HomeViewModel extends ViewModel {
 
     public void setData(String s){
         mText.postValue(s);
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+
     }
 }

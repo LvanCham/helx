@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+        android:id="@+id/detail_player"
+        android:layout_width="match_parent"
+        android:layout_height="580pt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/detail_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cls_intro_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="三年级上册"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="30px"
+                android:layout_marginTop="30px"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_intro_subject"
+                app:layout_constraintStart_toStartOf="@id/tv_intro_subject"
+                android:text="￥ 999.8"
+                android:layout_marginTop="24px"
+                android:textColor="@color/colorP5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="15px"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/tv_intro_price"
+                app:layout_constraintBottom_toBottomOf="@id/tv_intro_price"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="150px"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="销量： 88"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/tv_intro_price"
+                app:layout_constraintBottom_toBottomOf="@id/tv_intro_price"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30px"
+                android:text="收藏"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/cls_intro_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/cls_intro_2"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90px">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_subject_ver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="科目版本"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="30px"
+                android:layout_marginTop="30px"
+                />
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_ver_i1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_intro_subject_ver"
+                app:layout_constraintStart_toStartOf="@id/tv_intro_subject_ver"
+                android:text="人教版： 英语、数学、语文、美术"
+                android:layout_marginTop="24px"
+
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_ver_i2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_intro_ver_i1"
+                app:layout_constraintStart_toStartOf="@id/tv_intro_ver_i1"
+                android:text="苏教版： 英语、数学、语文、美术，计算机与科学"
+                android:layout_marginTop="24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="15px"
+                />
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/cls_intro_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/cls_intro_3"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90px">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_subject_scope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="适用范围"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="30px"
+                android:layout_marginTop="30px"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_scope_i1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20px"
+                android:layout_marginEnd="20px"
+                android:text="MVP 中 V 层和 P 层互相持有对方的引用，在V 层调用 P 层逻辑后，P 层回调V 层的相应方法更新 UI。
+而在 MVVM 中，上层只依赖直接下层，不能跨层持有引用，那 View 层调用 ViewModel 处理数据后，又如何更新自己呢？
+答案就在 ViewModel 中的 LiveData，这是一种可观察的数据类型，在 View 层中观察者 Observer 对需要的数据进行订阅，当数据发生变化后，观察者 Observer 的回调方法 onChanged() 中会收到新的数据，从而可以更新 UI。"
+                app:layout_constraintStart_toStartOf="@id/tv_intro_subject_scope"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_intro_subject_scope" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_scope_i2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_intro_scope_i1"
+                app:layout_constraintStart_toStartOf="@id/tv_intro_scope_i1"
+                android:text="计算机与科学"
+                android:layout_marginTop="24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="15px"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/cls_intro_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/cls_intro_4"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90px">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_subject_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="课程详情"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="30px"
+                android:layout_marginTop="30px"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_intro_details_i1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_intro_subject_details"
+                app:layout_constraintStart_toStartOf="@id/tv_intro_subject_details"
+                android:text="View 层调用 ViewModel 获取数据"
+                android:layout_marginTop="24px"
+
+
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_intro_details_i2"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_intro_details_i1"
+                app:layout_constraintStart_toStartOf="@id/tv_intro_details_i1"
+                android:layout_marginTop="24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="15px"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@mipmap/splashnice"
+                android:layout_marginEnd="30px"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

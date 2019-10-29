@@ -35,6 +35,8 @@
         <activity android:name=".mvvm.ui.activity.DetailsActivity"
             android:label="详情页"
             />
+        <activity android:name=".mvvm.ui.activity.BehaviorActivity"
+            android:label="测试behavior"/>
     </application>
 
 </manifest>

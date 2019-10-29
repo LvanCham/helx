@@ -19,18 +19,25 @@ import me.yokeyword.fragmentation.SupportFragment;
  */
 public abstract class BaseMvvmFragment<T extends ViewDataBinding> extends SupportFragment {
 
-    public  T t;
+    public  T binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        t =  DataBindingUtil.inflate(inflater, onLayout(),container,false);
+        binding =  DataBindingUtil.inflate(inflater, onLayout(),container,false);
+        binding.setLifecycleOwner(this);
         initView();
-        return t.getRoot();
-
+        return binding.getRoot();
     }
     public abstract int onLayout();
 
     public abstract void initView();
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(binding!=null){
+            binding.unbind();
+        }
+    }
 }

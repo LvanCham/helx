@@ -1,11 +1,18 @@
 package com.cham.helx.mvvm.ui.fragment;
 
 import android.os.Bundle;
+import android.view.View;
+
+
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.cham.helx.R;
 import com.cham.helx.databinding.FragmentTestBinding;
 import com.cham.helx.mvvm.base.BaseMvvmFragment;
-import com.cham.helx.mvvm.bean.Test;
+import com.cham.helx.mvvm.test.Test;
+import com.cham.helx.mvvm.test.TestViewModel;
+
 
 /**
  * Hello World
@@ -14,7 +21,8 @@ import com.cham.helx.mvvm.bean.Test;
  */
 public class TestFragment extends BaseMvvmFragment<FragmentTestBinding> {
 
-
+    private TestViewModel testViewModel;
+    private String TAG  ="TestFragment";
     public static TestFragment newInstance() {
         Bundle args = new Bundle();
         TestFragment fragment = new TestFragment();
@@ -28,8 +36,25 @@ public class TestFragment extends BaseMvvmFragment<FragmentTestBinding> {
 
     @Override
     public void initView() {
-
         Test test = new Test();
-        t.setTest(test);
+        binding.setTest(test);
+        testViewModel= ViewModelProviders.of(this).get(TestViewModel.class);
+
+        testViewModel.getData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                test.setS1(s);
+               binding.setTest(test);
+            }
+        });
+
+
+        binding.btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testViewModel.setData();
+            }
+        });
+
     }
 }

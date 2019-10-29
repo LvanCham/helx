@@ -15,4 +15,12 @@
         android:id="@+id/menu_thr"
         android:icon="@drawable/sele_inspiration"
         android:title="模式" />
+    <item
+        android:id="@+id/menu_for"
+        android:icon="@drawable/sele_inspiration"
+        android:title="测试" />
+    <item
+        android:id="@+id/menu_fiv"
+        android:icon="@drawable/sele_inspiration"
+        android:title="我的" />
 </menu>

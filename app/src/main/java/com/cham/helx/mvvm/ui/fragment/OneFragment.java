@@ -2,6 +2,7 @@ package com.cham.helx.mvvm.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.bumptech.glide.Glide;
 import com.cham.helx.R;
 import com.cham.helx.madapter.BaseViewHolder;
@@ -78,9 +80,9 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     SwipeRefreshLayout swLayout;
     private   Unbinder unbinder;
     private Handler mHandler = new Handler(Looper.getMainLooper());
-    private String[] titles = new String[]{"全部", "一年级",
-            "二年级","三年级","四年级", "五年级",
-            "六年级", "七年级", "八年级", "九年级"};
+
+    private List<String> titles =new ArrayList<>();
+
     protected Context mContext;
     private  MultipleItemAdapter multipleItemAdapter;
     private ViewPager2 viewPager2 ;
@@ -104,6 +106,9 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
      * 全部课程
      * */
     private List<String> mAllData;
+
+
+
 
     public static OneFragment newInstance() {
         Bundle args = new Bundle();
@@ -133,6 +138,18 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     }
 
     private void initVeiw(){
+        titles.add("全部");
+        titles.add("一年级");
+        titles.add("二年级");
+        titles.add("三年级");
+        titles.add("四年级");
+        titles.add("五年级");
+        titles.add("六年级");
+        titles.add("七年级");
+        titles.add("八年级");
+        titles.add("九年级");
+
+
         //banner 数据
         mBannerData = new ArrayList<>();
         mBannerData.add(new BannerBean(R.mipmap.splash_o));
@@ -165,12 +182,12 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
         commonNavigator.setAdjustMode(false);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override public int getCount() {
-                return titles == null ? 0 : titles.length;
+                return titles.size();
             }
             @Override
             public IPagerTitleView getTitleView(Context context, final int index) {
                 SimplePagerTitleView simplePagerTitleView = new ScaleTransitionPagerTitleView(context);
-                simplePagerTitleView.setText(titles[index]);
+                simplePagerTitleView.setText(titles.get(index));
                 simplePagerTitleView.setTextSize(22);
                 simplePagerTitleView.getPaint().setFakeBoldText(true);
                 simplePagerTitleView.setNormalColor(getResources().getColor(R.color.tab_unchecked));
@@ -309,12 +326,12 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
 
     @Override
     public void convert(BaseViewHolder holder, int position) {
-        holder.setAppText(R.id.tv__rcy_title,titles[position]);
+        holder.setAppText(R.id.tv__rcy_title,titles.get(position));
         RecyclerView mRcyItem = holder.getView(R.id.item_rcy);
         mRcyItem.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_all_tem, mAllData) {
             @Override
             public void convert(BaseViewHolder holder, String s, int pot) {
-                holder.setAppText(R.id.tv_naem,titles[position]);
+                holder.setAppText(R.id.tv_naem,titles.get(position));
             }
         });
         mRcyItem.setHasFixedSize(true);

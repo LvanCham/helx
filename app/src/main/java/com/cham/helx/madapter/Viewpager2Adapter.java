@@ -6,22 +6,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Hello World
  * Date: 2019/10/16
  * Author: Cham
+ * 临时的
  */
 public class Viewpager2Adapter  extends RecyclerView.Adapter<BaseViewHolder> {
 
 
     private Context mContext;
-    private String[] mTitle;
+    private List<String> mTitle =new ArrayList<>();
     private int mLayoutId ;
 
     private  converHolder converHolder ;
-    public  Viewpager2Adapter(Context c,String[] title,int mLayoutId){
+    public  Viewpager2Adapter(Context c,List<String> title,int mLayoutId){
         mContext=c;
-        mTitle =title;
+        mTitle.addAll(title);
         this.mLayoutId=mLayoutId;
     }
 
@@ -39,11 +43,23 @@ public class Viewpager2Adapter  extends RecyclerView.Adapter<BaseViewHolder> {
     public void setcConverHolder(converHolder converHolder1){
         converHolder =converHolder1;
     }
-    public  interface     converHolder{
+    public  interface    converHolder{
         void    convert( BaseViewHolder holder, int position);
     }
     @Override
     public int getItemCount() {
-        return mTitle.length;
+        return mTitle.size();
+    }
+
+    public void updateData(List dataSet) {
+        this.mTitle.clear();
+        appendData(dataSet);
+    }
+
+    public void appendData(List dataSet) {
+        if (dataSet != null && !dataSet.isEmpty()) {
+            this.mTitle.addAll(dataSet);
+         notifyDataSetChanged();
+        }
     }
 }

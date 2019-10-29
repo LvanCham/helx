@@ -2,6 +2,7 @@ package com.cham.helx;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -12,13 +13,16 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.cham.helx.base.BaseApplication;
 import com.cham.helx.mvp.entity.PoetryEntity;
+import com.cham.helx.mvvm.test.MyObserver;
 import com.cham.helx.test.DaggerMianComponent;
 import com.cham.helx.test.MianComponent;
 import com.cham.helx.test.StuA;
 import com.cham.helx.test.StuD;
 import com.cham.helx.test.StuF;
+import com.elvishew.xlog.XLog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rxjava.rxlife.RxLife;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -30,15 +34,17 @@ import butterknife.ButterKnife;
 import rxhttp.RxHttpPlugins;
 import rxhttp.wrapper.param.RxHttp;
 
-import static io.reactivex.android.schedulers.AndroidSchedulers.mainThread;
-import static io.reactivex.schedulers.Schedulers.io;
-
+/**
+ *
+ * di 基本用法  关联test文件夹
+ *
+ * */
 
 public class MainActivity extends AppCompatActivity {
 
 
 
-    private String TAG = "MainAty";
+    private String TAG = "MainActivity";
 
     private StuF stuF;
 
@@ -62,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
 
+        getLifecycle().addObserver(new MyObserver());
 
         RxPermissions rxPermissions = new RxPermissions(MainActivity.this);
         rxPermissions.request(Manifest.permission.CAMERA).subscribe(granted -> {
@@ -104,11 +111,16 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
+      XLog.e(AdaptScreenUtils.pt2Px(1080));
 
 
     }
 
 
+    @Override
+    public Resources getResources() {
+        return AdaptScreenUtils.adaptWidth(super.getResources(),1080);
+    }
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

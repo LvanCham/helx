@@ -17,13 +17,15 @@ import java.util.List;
  * Hello World
  * Date: 2019/8/13
  * Author: Cham
+ *
+ * 短音乐 播放
  */
 public class SoundPoolHelper {
     private static  String TAG ="SoundPoolHelper";
     private Context mContext;
     private SoundPoolHelper(Context context){
         mContext =context;
-        init();
+
     }
    /**
     * 单例模式
@@ -37,12 +39,13 @@ public class SoundPoolHelper {
            synchronized (SoundPoolHelper.class) {
                if (instance == null) {
                    instance = new SoundPoolHelper(context);
-
                }
            }
        }
        return instance;
    }
+
+
     private SoundPool mainSoundPool;
     private AudioManager mainAudioManager;
     private float volume;
@@ -57,7 +60,7 @@ public class SoundPoolHelper {
 
 
     //init settings
-    private void init(){
+    public void init(){
         streamIdS = new ArrayList<>();
         // AudioManager audio settings for adjusting the volume
         mainAudioManager = (AudioManager)this.mContext. getSystemService(Context.AUDIO_SERVICE);

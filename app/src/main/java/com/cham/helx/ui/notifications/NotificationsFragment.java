@@ -17,11 +17,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.cham.helx.R;
 
+import com.cham.helx.utils.LiveDataBus;
 import com.cham.helx.utils.SoundPoolHelper;
 import com.cham.helx.utils.SpUtils;
+import com.elvishew.xlog.XLog;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,8 +52,6 @@ public class NotificationsFragment extends Fragment {
     private NotificationsViewModel notificationsViewModel;
 
 
-
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -71,17 +72,15 @@ public class NotificationsFragment extends Fragment {
         notificationsViewModel =
                 ViewModelProviders.of(this).get(NotificationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-
+        SoundPoolHelper.getInstance(getActivity()).init();
         unbinder = ButterKnife.bind(this, root);
         initView(root);
         return root;
     }
 
     private void initView(View  root) {
-        SoundPoolHelper.getInstance(getActivity());
 
         final TextView textView = root.findViewById(R.id.text_notifications);
-
         notificationsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -106,16 +105,9 @@ public class NotificationsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //2
-        Log.e(TAG, "onCreate: "+ savedInstanceState );
 
         setRetainInstance(true);
     }
-
-
-
-
-
 
 
 
@@ -124,12 +116,13 @@ public class NotificationsFragment extends Fragment {
     public void OnClickT(View view){
         switch (view.getId()){
             case R.id.text1:
-
                MediaPlayer.create(getActivity(), R.raw.car_up).getDuration() ;
                 Log.e(TAG, "获取时长: "+   MediaPlayer.create(getActivity(), R.raw.car_up).getDuration()  );
                 SoundPoolHelper.getInstance(getActivity()).playSound(0);
+
                 break;
             case R.id.text2:
+
                 SoundPoolHelper.getInstance(getActivity()).playSound(1);
                 break;
             case R.id.text3:
@@ -142,6 +135,7 @@ public class NotificationsFragment extends Fragment {
                 SoundPoolHelper.getInstance(getActivity()).playSound(4);
                 break;
             case R.id.text6:
+
                 SoundPoolHelper.getInstance(getActivity()).playSound(5);
                 break;
             case R.id.text7:

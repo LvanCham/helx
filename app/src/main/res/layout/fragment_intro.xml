@@ -165,7 +165,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_intro_scope_i1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_intro_subject_scope"
             app:layout_constraintStart_toStartOf="@id/tv_intro_subject_scope"
@@ -173,6 +173,8 @@
 而在 MVVM 中，上层只依赖直接下层，不能跨层持有引用，那 View 层调用 ViewModel 处理数据后，又如何更新自己呢？
 答案就在 ViewModel 中的 LiveData，这是一种可观察的数据类型，在 View 层中观察者 Observer 对需要的数据进行订阅，当数据发生变化后，观察者 Observer 的回调方法 onChanged() 中会收到新的数据，从而可以更新 UI。"
             android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="10dp"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -210,8 +212,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_marginTop="10dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_intro_details_i1"
@@ -220,10 +221,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_intro_subject_details"
             app:layout_constraintStart_toStartOf="@id/tv_intro_subject_details"
             android:text="View 层调用 ViewModel 获取数据"
-            android:layout_marginTop="8dp"
-
-
-            />
+            android:layout_marginTop="8dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_intro_details_i2"

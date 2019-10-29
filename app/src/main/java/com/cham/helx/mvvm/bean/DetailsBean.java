@@ -80,14 +80,10 @@ public class DetailsBean {
 
 
 
-
-
     @BindingAdapter({"setnavigator"})
     public  static  void setCommonNavigator(MagicIndicator magicIndicator,CommonNavigator commonNavigator){
         magicIndicator.setNavigator(commonNavigator);
     }
-
-
 
 
     /**

@@ -1,12 +1,13 @@
 package com.cham.helx.ui.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.cham.helx.R;
 import com.cham.helx.mvp.ui.UserMvpActivity;
 import com.cham.helx.mvp.ui.VideoPlayActivity;
 import com.cham.helx.mvvm.MainAty;
+import com.cham.helx.mvvm.ui.activity.BehaviorActivity;
 
 import java.util.Objects;
 
@@ -34,6 +36,12 @@ public class HomeFragment extends Fragment {
     AppCompatButton btnVideo;
     @BindView(R.id.btn_new_aty)
     AppCompatButton btnNewAty;
+    @BindView(R.id.text_home)
+    TextView textHome;
+    @BindView(R.id.chronometer)
+    Chronometer chronometer;
+    @BindView(R.id.btn_be)
+    AppCompatButton btnBe;
     private Unbinder unbinder;
     @BindView(R.id.btn_chack)
     AppCompatButton btnChack;
@@ -41,22 +49,10 @@ public class HomeFragment extends Fragment {
 
     private TextView textView;
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.e(TAG, "onActivityCreated: ");
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.e(TAG, "onAttach: ");
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        Log.e(TAG, "onCreateView: ");
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, root);
@@ -65,10 +61,6 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
 
     private void initSth() {
 
@@ -81,7 +73,9 @@ public class HomeFragment extends Fragment {
 
         btnChack.setOnClickListener(v -> {
             homeViewModel.setData("AAA");
+            Log.e(TAG, "获取计时器时间 " + chronometer.getBase());
             Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(), UserMvpActivity.class));
+
         });
 
         btnVideo.setOnClickListener(v -> {
@@ -89,11 +83,18 @@ public class HomeFragment extends Fragment {
         });
 
         btnNewAty.setOnClickListener(v -> {
-
-
-            Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(),MainAty.class));
+            Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(), MainAty.class));
 
         });
+
+
+        btnBe.setOnClickListener(v ->Objects.requireNonNull(getActivity())
+                .startActivity(new Intent(getActivity(), BehaviorActivity.class)));
+
+        chronometer.setFormat("计时：%s");
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        chronometer.start();
+
 
     }
 
