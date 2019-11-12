@@ -1,5 +1,8 @@
 package com.cham.helx.mvvm.test;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
 import java.util.List;
 
 /**
@@ -7,11 +10,14 @@ import java.util.List;
  * Date: 2019/10/17
  * Author: Cham
  */
-public class Test  {
+public class Test  extends BaseObservable {
 
+
+    @Bindable
     public String getS1() {
         return s1;
     }
+    @Bindable
     public void setS1(String s1) {
         this.s1 = s1;
     }

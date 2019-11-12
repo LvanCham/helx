@@ -1,9 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.cham.mytestarms"
+        applicationId "com.cham.helx"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -157,14 +159,26 @@ dependencies {
 
 
     //Viewpager2
-    implementation "androidx.viewpager2:viewpager2:1.0.0-beta05"
+    implementation "androidx.viewpager2:viewpager2:1.0.0-rc01"
 
     //内存泄漏检测
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
 
     //Jetpack
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
+
+
+
+
+    //
+    implementation 'org.aspectj:aspectjrt:1.8.+'
+    compile "androidx.core:core-ktx:+"
+    compile "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

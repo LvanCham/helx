@@ -19,6 +19,9 @@ public class TestRcyAdapter extends RVBindingAdapter<ItemCourseNavBinding,Test> 
 
 
     private OnRcyAdapterclick onRcyAdapterclick;
+
+
+
     public TestRcyAdapter(Context context, List<Test> datas) {
         super(context,  datas);
     }
@@ -45,7 +48,6 @@ public class TestRcyAdapter extends RVBindingAdapter<ItemCourseNavBinding,Test> 
     }
 
    public interface  OnRcyAdapterclick{
-
         void itemOnclick(int position,List<Test> datas);
     }
 

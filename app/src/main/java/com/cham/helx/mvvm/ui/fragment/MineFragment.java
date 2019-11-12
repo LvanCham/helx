@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.cham.helx.R;
@@ -36,5 +37,11 @@ public class MineFragment  extends BaseMvvmFragment<FragmentMineBinding> {
     @Override
     public void initView() {
 
+        binding.nestedview.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+            }
+        });
     }
 }

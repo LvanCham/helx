@@ -8,10 +8,7 @@
         <variable
             name="test"
             type="com.cham.helx.mvvm.test.Test" />
-
     </data>
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,8 +26,6 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/ed_test"
             android:layout_width="200dp"
@@ -40,9 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_test"
-            android:text="@={test.s1}"
-            />
-
+            android:text="@={test.s1}" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_1"
             android:layout_width="wrap_content"
@@ -51,11 +44,8 @@
             app:layout_constraintEnd_toEndOf="@+id/ed_test"
             app:layout_constraintStart_toStartOf="@+id/ed_test"
             app:layout_constraintTop_toBottomOf="@+id/ed_test"
-
             android:text="获取"
             android:background="@drawable/shape_comm_cir_btn"
-            android:textColor="@color/white"
-            />
-
+            android:textColor="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

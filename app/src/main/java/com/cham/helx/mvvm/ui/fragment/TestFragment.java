@@ -55,6 +55,5 @@ public class TestFragment extends BaseMvvmFragment<FragmentTestBinding> {
                 testViewModel.setData();
             }
         });
-
     }
 }

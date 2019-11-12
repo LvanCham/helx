@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="15dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="5dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cb_sele"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_shopcar_sc"
+                android:layout_width="92dp"
+                android:layout_height="83dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:background="@mipmap/ic_launcher"
+                app:layout_constraintStart_toEndOf="@+id/cb_sele"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:text="科目版本"
+                android:textSize="15sp"
+
+                app:layout_constraintEnd_toEndOf="@+id/iv_shopcar_sc"
+                app:layout_constraintStart_toStartOf="@+id/iv_shopcar_sc"
+                app:layout_constraintTop_toBottomOf="@+id/iv_shopcar_sc" />
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_shopcar_class_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一年级全册"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/dp_10"
+                app:layout_constraintStart_toEndOf="@+id/iv_shopcar_sc"
+                app:layout_constraintTop_toTopOf="@+id/iv_shopcar_sc" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_shopcar_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_shopcar_class_name"
+                app:layout_constraintStart_toStartOf="@id/tv_shopcar_class_name"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="钱"
+                android:textColor="@color/colorP2" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_shopcar_sc"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:text="分类 去找打算打"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="14sp"
+
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                app:layout_constraintStart_toStartOf="@+id/tv_shopcar_money"
+                app:layout_constraintTop_toBottomOf="@+id/tv_shopcar_money" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

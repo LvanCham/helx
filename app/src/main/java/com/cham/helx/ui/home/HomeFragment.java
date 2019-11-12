@@ -21,6 +21,7 @@ import com.cham.helx.R;
 import com.cham.helx.mvp.ui.UserMvpActivity;
 import com.cham.helx.mvp.ui.VideoPlayActivity;
 import com.cham.helx.mvvm.MainAty;
+import com.cham.helx.mvvm.test.AAAViewActivity;
 import com.cham.helx.mvvm.ui.activity.BehaviorActivity;
 
 import java.util.Objects;
@@ -42,6 +43,8 @@ public class HomeFragment extends Fragment {
     Chronometer chronometer;
     @BindView(R.id.btn_be)
     AppCompatButton btnBe;
+    @BindView(R.id.btn_aaa)
+    AppCompatButton btnAaa;
     private Unbinder unbinder;
     @BindView(R.id.btn_chack)
     AppCompatButton btnChack;
@@ -87,8 +90,9 @@ public class HomeFragment extends Fragment {
 
         });
 
+        btnAaa.setOnClickListener(v-> Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(), AAAViewActivity.class)));
 
-        btnBe.setOnClickListener(v ->Objects.requireNonNull(getActivity())
+        btnBe.setOnClickListener(v -> Objects.requireNonNull(getActivity())
                 .startActivity(new Intent(getActivity(), BehaviorActivity.class)));
 
         chronometer.setFormat("计时：%s");

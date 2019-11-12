@@ -21,7 +21,6 @@ public class TestViewModel extends BaseViewModel<TestRepository> {
 
 
     public  void setData(){
-
         s.postValue(repository.getData());
     }
 

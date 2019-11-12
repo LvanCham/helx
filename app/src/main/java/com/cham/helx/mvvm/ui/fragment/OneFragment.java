@@ -27,6 +27,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.cham.helx.R;
 import com.cham.helx.madapter.BaseViewHolder;
 import com.cham.helx.madapter.CommonAdapter;
@@ -98,7 +100,7 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     private List<String> mFreeData;
 
     /**
-     * 免费课程数据
+     * 专项课程数据
      * */
     private List<String> mSpecialData;
 
@@ -267,8 +269,14 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
     public void onBindBanner(BaseViewHolder baseViewHolder, int position) {
         XBanner mXBanner = baseViewHolder.getView(R.id.xbanner);
         mXBanner.setBannerData(mBannerData);
-        mXBanner.loadImage((banner, model, view, position1) ->
-                Glide.with(mContext).load(((BannerBean) model).getXBannerUrl()).into((ImageView) view));
+
+        RoundedCorners roundedCorners= new RoundedCorners(30);
+        RequestOptions options=RequestOptions.bitmapTransform(roundedCorners);
+
+        mXBanner.loadImage((banner, model, view, position1) ->{
+
+            Glide.with(mContext).load(((BannerBean) model).getXBannerUrl()).apply(options).into((ImageView) view);
+        });
     }
 
     @Override
@@ -319,6 +327,7 @@ public class OneFragment extends SupportFragment implements  SwipeRefreshLayout.
         mRcyItem.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_special_content, mSpecialData) {
             @Override
             public void convert(BaseViewHolder holder, String s, int pot) {
+
 
             }
         });

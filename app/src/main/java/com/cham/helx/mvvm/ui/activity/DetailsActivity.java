@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
@@ -119,11 +120,9 @@ public class DetailsActivity extends BaseMvvmActivity<ActivityDetailsBinding> {
                 return indicator;
             }
         });
-
         binding.vp2Details.setAdapter(mViewpagerAdapter);
         detailsBean.setCommonNavigator(commonNavigator);
         binding.setDetails(detailsBean);
-
 
         binding.vp2Details.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -131,13 +130,11 @@ public class DetailsActivity extends BaseMvvmActivity<ActivityDetailsBinding> {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
                 binding.magicDetails.onPageScrolled(position,positionOffset,positionOffsetPixels);
             }
-
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 binding.magicDetails.onPageSelected(position);
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
@@ -145,8 +142,9 @@ public class DetailsActivity extends BaseMvvmActivity<ActivityDetailsBinding> {
             }
         });
 
-
         binding.ivBack.setOnClickListener(v -> finish());
+
+
 
 
     }

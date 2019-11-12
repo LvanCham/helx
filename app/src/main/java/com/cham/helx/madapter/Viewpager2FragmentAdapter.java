@@ -23,7 +23,6 @@ public class Viewpager2FragmentAdapter  extends FragmentStateAdapter {
     public Viewpager2FragmentAdapter(@NonNull FragmentActivity fragmentActivity,List<Fragment> fragmentList) {
         super(fragmentActivity);
         mFragmentList =fragmentList;
-
     }
 
     public Viewpager2FragmentAdapter(@NonNull Fragment fragment) {

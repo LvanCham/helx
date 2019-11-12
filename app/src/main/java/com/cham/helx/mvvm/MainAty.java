@@ -2,9 +2,11 @@ package com.cham.helx.mvvm;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -59,6 +61,12 @@ public class MainAty extends SupportActivity  {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //开始记录，且该方法可以设置文件大小和路径
+        Debug.startMethodTracing("browser.trace");
+        //结束记录
+        Debug.stopMethodTracing();
+
         setContentView(R.layout.activity_test);
         ButterKnife.bind(this);
         //黑色字体
@@ -90,28 +98,25 @@ public class MainAty extends SupportActivity  {
             mFragments[3] = findFragment(TestFragment.class);
             mFragments[4] =findFragment(MineFragment.class);
         }
-        bottomNavi.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_one:
-                        showHideFragment(mFragments[0]);
-                        break;
-                    case R.id.menu_two:
-                        showHideFragment(mFragments[1]);
-                        break;
-                    case R.id.menu_thr:
-                        showHideFragment(mFragments[2]);
-                        break;
-                    case R.id.menu_for:
-                        showHideFragment(mFragments[3]);
-                        break;
-                    case R.id.menu_fiv:
-                        showHideFragment(mFragments[4]);
-                        break;
-                }
-                return true;
+        bottomNavi.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.menu_one:
+                    showHideFragment(mFragments[0]);
+                    break;
+                case R.id.menu_two:
+                    showHideFragment(mFragments[1]);
+                    break;
+                case R.id.menu_thr:
+                    showHideFragment(mFragments[2]);
+                    break;
+                case R.id.menu_for:
+                    showHideFragment(mFragments[3]);
+                    break;
+                case R.id.menu_fiv:
+                    showHideFragment(mFragments[4]);
+                    break;
             }
+            return true;
         });
 
 

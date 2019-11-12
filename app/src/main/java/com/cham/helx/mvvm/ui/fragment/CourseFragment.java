@@ -30,6 +30,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  */
 public class CourseFragment extends SupportFragment {
 
+
     private String TAG = "CourseFragment";
     @BindView(R.id.rcy_comment)
     RecyclerView rcyComment;
@@ -50,6 +51,7 @@ public class CourseFragment extends SupportFragment {
         View view = inflater.inflate(R.layout.fragment_comment, container, false);
         mUnbinder= ButterKnife.bind(this, view);
         initView();
+
         return view;
     }
     private void initView(){

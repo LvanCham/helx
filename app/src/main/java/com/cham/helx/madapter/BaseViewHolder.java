@@ -51,6 +51,10 @@ public class BaseViewHolder extends RecyclerView.ViewHolder  {
                                                   ViewGroup parent, int layoutId) {
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
+
+
+
+
         BaseViewHolder holder = new BaseViewHolder(context, itemView);
         return holder;
     }

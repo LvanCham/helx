@@ -10,13 +10,21 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cham.helx.R;
+import com.cham.helx.madapter.BaseViewHolder;
+import com.cham.helx.madapter.CommonAdapter;
 import com.cham.helx.mvp.entity.PoetryEntity;
+import com.cham.helx.widget.PillarView;
 import com.rxjava.rxlife.RxLife;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import rxhttp.wrapper.param.RxHttp;
 
@@ -30,7 +38,9 @@ public class DashboardFragment extends Fragment {
 
 
     private   TextView textView;
+    private RecyclerView recyclerView;
 
+    private List<Integer> mData = new ArrayList<>();
 
 
     @Override
@@ -43,17 +53,13 @@ public class DashboardFragment extends Fragment {
         super.onAttach(context);
         Log.e(TAG, "onAttach: " );
     }
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.e(TAG, "onCreateView: " );
-
         if(lastView ==null){
            // lastView  = inflater.inflate(R.layout.fragment_dashboard, container, false);
           lastView = super.onCreateView(inflater,container,savedInstanceState);
         }
-
         View root =  inflater.inflate(R.layout.fragment_dashboard, container, false);
-
         lastView =root;
         return root;
     }
@@ -64,11 +70,10 @@ public class DashboardFragment extends Fragment {
             Log.e(TAG, "onViewCreated: " );
             //初始化过视图则不再进行view和data初始化
             super.onViewCreated(view, savedInstanceState);
-
             isNavigationViewInit = true;
         }
         textView = lastView.findViewById(R.id.text_dashboard);
-
+        recyclerView = lastView.findViewById(R.id.rcy_timealxe);
 
         dashboardViewModel =
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
@@ -89,6 +94,25 @@ public class DashboardFragment extends Fragment {
                 },throwable -> {
 
                 });
+
+        for (int i = 0; i <9 ; i++) {
+            mData.add(i*90);
+        }
+
+        recyclerView.setAdapter(new CommonAdapter<Integer>(getContext(),R.layout.item_time_alxe,mData) {
+            @Override
+            public void convert(BaseViewHolder holder, Integer s, int pot) {
+                AppCompatTextView textView = holder.getView(R.id.tv_bg);
+                if(pot==mData.size()-1){
+                    textView.setVisibility(View.GONE);
+                }else {
+                    textView.setVisibility(View.VISIBLE);
+                }
+                PillarView pillarView = holder.getView(R.id.pina);
+                pillarView.setmHeight(s);
+            }
+        });
+        recyclerView.setHasFixedSize(true);
 
     }
 }

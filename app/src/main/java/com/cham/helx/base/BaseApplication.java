@@ -1,6 +1,7 @@
 package com.cham.helx.base;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
@@ -11,9 +12,11 @@ import android.util.Printer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelStore;
 import androidx.multidex.MultiDex;
 
 import com.blankj.utilcode.util.Utils;
+import com.cham.helx.aop.Testaop;
 import com.cham.helx.di.component.AppComponent;
 import com.cham.helx.di.component.DaggerAppComponent;
 import com.elvishew.xlog.LogConfiguration;
@@ -21,6 +24,13 @@ import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.XLog;
 import com.elvishew.xlog.interceptor.BlacklistTagsFilterInterceptor;
 import com.squareup.leakcanary.LeakCanary;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.reflect.SourceLocation;
+import org.aspectj.runtime.internal.AroundClosure;
+
+import java.util.List;
 
 import me.yokeyword.fragmentation.BuildConfig;
 import me.yokeyword.fragmentation.Fragmentation;
@@ -37,12 +47,19 @@ public class BaseApplication extends Application {
 
     private String TAG ="BaseApplication";
 
+    private ViewModelStore viewModelStore ;
+
     private long startWorkTimeMillis =0;
     private Handler handler = new Handler(Looper.getMainLooper());
     private AppComponent appComponent;
     @Override
     public void onCreate() {
         super.onCreate();
+        //防止多次启动Application
+        if (!getPackageName().equals(
+                getProcessName(getApplicationContext(), android.os.Process.myPid()))) {
+            return;
+        }
         initXlog();
         appComponent=  DaggerAppComponent.builder().application(this).build();
         appComponent.InjectApp(this);
@@ -51,13 +68,10 @@ public class BaseApplication extends Application {
         initFagmentationx();
         HandlerARN();
         mRegisterActivityLifecycleCallbacks();
-
         if (!LeakCanary.isInAnalyzerProcess(this)) {
             LeakCanary.install(this);
         }
     }
-
-
     private void initXlog(){
         LogConfiguration config = new LogConfiguration.Builder()
                 .logLevel(BuildConfig.DEBUG ? LogLevel.ALL             // 指定日志级别，低于该级别的日志将不会被打印，默认为 LogLevel.ALL
@@ -73,11 +87,9 @@ public class BaseApplication extends Application {
         XLog.init(LogLevel.ALL,config);
 
     }
-
     public AppComponent getAppComponent() {
         return appComponent;
     }
-
     private void initFagmentationx(){
         Fragmentation.builder()
                 // 设置 栈视图 模式为 （默认）悬浮球模式   SHAKE: 摇一摇唤出  NONE：隐藏， 仅在Debug环境生效
@@ -96,7 +108,6 @@ public class BaseApplication extends Application {
                 })
                 .install();
     }
-
     private void HandlerARN(){
         Looper.getMainLooper().setMessageLogging(new Printer() {
             @Override
@@ -134,7 +145,6 @@ public class BaseApplication extends Application {
         });
 
     }
-
     private void  mRegisterActivityLifecycleCallbacks(){
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
@@ -174,20 +184,33 @@ public class BaseApplication extends Application {
             }
         });
     }
-
-
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
-
-
     @Override
     public void onLowMemory() {
         super.onLowMemory();
         if(handler!=null){
             handler.removeCallbacksAndMessages(this);
         }
+    }
+    @Nullable
+    public String getProcessName(Context cxt, int pid) {
+        ActivityManager am = (ActivityManager) cxt.getSystemService(Context.ACTIVITY_SERVICE);
+        if (am == null) {
+            return null;
+        }
+        List<ActivityManager.RunningAppProcessInfo> runningApps = am.getRunningAppProcesses();
+        if (runningApps != null && !runningApps.isEmpty()) {
+            for (ActivityManager.RunningAppProcessInfo procInfo : runningApps) {
+                if (procInfo.pid == pid) {
+                    return procInfo.processName;
+                }
+            }
+        }
+
+        return null;
     }
 }
