@@ -5,9 +5,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.cham.helx.R;
@@ -20,7 +18,6 @@ import com.cham.helx.mvvm.ui.fragment.CourseFragment;
 import com.cham.helx.mvvm.ui.fragment.IntroFragment;
 import com.cham.helx.utils.ScaleTransitionPagerTitleView;
 import com.elvishew.xlog.XLog;
-
 import net.lucode.hackware.magicindicator.buildins.UIUtil;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
@@ -62,7 +59,6 @@ public class DetailsActivity extends BaseMvvmActivity<ActivityDetailsBinding> {
 
 
     private void initVeiw() {
-
         /**
          * 宽度适配后 pt  = px
          * */

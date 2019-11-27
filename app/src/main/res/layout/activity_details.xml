@@ -5,10 +5,10 @@
 
     <data>
         <import type="android.view.View" />
+
         <variable
             name="Details"
             type="com.cham.helx.mvvm.bean.DetailsBean" />
-
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
