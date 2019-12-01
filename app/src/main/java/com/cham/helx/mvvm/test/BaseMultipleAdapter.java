@@ -142,6 +142,7 @@ public class BaseMultipleAdapter <T> extends RecyclerView.Adapter<BaseViewHolder
 //           notifyItemRangeRemoved(0, size);
 //           notifyItemChanged(getItemCount());
             notifyDataSetChanged();
+            isEmpty =false;
         }else {
             isEmpty =true;
         }

@@ -62,8 +62,8 @@ public class TestViewActivity extends AppCompatActivity {
 
         commonAdapter = new BaseMultipleAdapter<>(this,R.layout.item_shop_car,mData);
         commonAdapter.setEmptyView(R.layout.item_empty);
-//        commonAdapter.setHeadView(R.layout.item_head);
-//        commonAdapter.setFooterView(R.layout.item_home_footer);
+        commonAdapter.setHeadView(R.layout.item_head);
+        commonAdapter.setFooterView(R.layout.item_home_footer);
 
         rcyContent.setAdapter(commonAdapter);
         rcyContent.setHasFixedSize(true);
