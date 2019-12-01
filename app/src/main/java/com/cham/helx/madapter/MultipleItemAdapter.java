@@ -45,10 +45,7 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
             footerView;
 
 
-    private BaseViewHolder BannerViewHolder,FreeViewHolder,
-            ContentViewHolder,SpecialViewHolder,
-            FooterViewHolder;
-
+    private BaseViewHolder viewHolder;
     private Context mContext;
 
     @NonNull
@@ -56,21 +53,17 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         if(bannerView!=0 && viewType ==TYPE_BANNER){
-            BannerViewHolder = BaseViewHolder.createViewHolder(mContext,parent, bannerView);
-            return BannerViewHolder;
+            viewHolder = BaseViewHolder.createViewHolder(mContext,parent, bannerView);
         }else if(freeClassVeiw!=0 && viewType ==TYPE_CLASS_FREE){
-            FreeViewHolder = BaseViewHolder.createViewHolder(mContext,parent,freeClassVeiw);
-            return FreeViewHolder;
+            viewHolder = BaseViewHolder.createViewHolder(mContext,parent,freeClassVeiw);
         }else if(contentClassView!=0 && viewType ==TYPE_CLASS_CONTENT){
-            ContentViewHolder = BaseViewHolder.createViewHolder(mContext,parent,contentClassView);
-            return ContentViewHolder;
+            viewHolder = BaseViewHolder.createViewHolder(mContext,parent,contentClassView);
         }else if(specialClassView!=0 && viewType ==TYPE_CLASS_SPECIAL){
-            SpecialViewHolder = BaseViewHolder.createViewHolder(mContext,parent,specialClassView);
-            return SpecialViewHolder;
+            viewHolder = BaseViewHolder.createViewHolder(mContext,parent,specialClassView);
         }else {
-            FooterViewHolder = BaseViewHolder.createViewHolder(mContext,parent,footerView);
-            return FooterViewHolder;
+            viewHolder = BaseViewHolder.createViewHolder(mContext,parent,footerView);
         }
+        return  viewHolder;
     }
 
     @Override
@@ -126,6 +119,7 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
         }
         bannerView =layoutId;
         notifyItemInserted(0);
+        notifyItemChanged(getItemCount());
     }
     public void setFreeClassVeiwView( int layoutId){
         if (mContext == null && layoutId < 0) {
@@ -133,6 +127,7 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
         }
         freeClassVeiw =layoutId;
         notifyItemInserted(1);
+        notifyItemChanged(getItemCount());
     }
     public void setContentClassView( int layoutId){
         if (mContext == null && layoutId < 0) {
@@ -140,20 +135,27 @@ public class MultipleItemAdapter  extends RecyclerView.Adapter<BaseViewHolder>{
         }
         contentClassView =layoutId;
         notifyItemInserted(2);
+        notifyItemChanged(getItemCount());
     }
     public void setSpecialClassView(int layoutId){
         if (mContext == null && layoutId < 0) {
             return;
         }
         specialClassView =layoutId;
+        //向末尾处添加item
         notifyItemInserted(3);
+        //刷新一下
+        notifyItemChanged(getItemCount());
     }
     public void setFooterView( int layoutId){
         if (mContext == null && layoutId < 0) {
             return;
         }
         footerView =layoutId;
+       //向末尾处添加item
         notifyItemInserted(getItemCount()-1);
+        //刷新一下
+        notifyItemChanged(getItemCount());
     }
 
 

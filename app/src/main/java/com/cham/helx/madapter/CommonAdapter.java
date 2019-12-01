@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.loadmore.LoadMoreView;
+import com.cham.helx.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,7 +49,10 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
 
     @Override
     public BaseViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
-        viewHolder = BaseViewHolder.createViewHolder(mContext, parent, mLayoutId);
+
+            viewHolder = BaseViewHolder.createViewHolder(mContext, parent, mLayoutId);
+
+
         return viewHolder;
     }
 
@@ -62,6 +69,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     }
 
 
+
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         convert(holder, mDatas.get(position), position);
@@ -69,14 +77,25 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     }
 
 
+    @Override
+    public int getItemViewType(int position) {
+
+        return super.getItemViewType(position);
+    }
 
     public abstract void convert(BaseViewHolder holder, T t, int pot);
+
+
 
     /**
      * @return
      */
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        int count;
+            count= mDatas.size();
+
+        return count;
     }
+
 }

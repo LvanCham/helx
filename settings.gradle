@@ -1,2 +1,2 @@
-include ':app', ':shopinfo'
+include ':app'
 rootProject.name='helx'

@@ -95,9 +95,6 @@ public class BaseViewHolder extends RecyclerView.ViewHolder  {
         return mConvertView;
     }
 
-
-
-
     /****以下为辅助方法*****/
 
     /**
@@ -107,8 +104,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder  {
      * @param text
      * @return
      */
-    public BaseViewHolder setText(int viewId, String text)
-    {
+    public BaseViewHolder setText(int viewId, String text) {
         TextView tv = getView(viewId);
         tv.setText(text);
         return this;

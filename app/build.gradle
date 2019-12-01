@@ -159,7 +159,7 @@ dependencies {
 
 
     //Viewpager2
-    implementation "androidx.viewpager2:viewpager2:1.0.0-rc01"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     //内存泄漏检测
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
@@ -175,9 +175,15 @@ dependencies {
 
     //
     implementation 'org.aspectj:aspectjrt:1.8.+'
-    compile "androidx.core:core-ktx:+"
-    compile "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
+
+
+    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //下拉刷新
+    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.0-alpha-1'      //核心必须依赖
+    implementation  'com.scwang.smart:refresh-header-radar:2.0.0-alpha-1'
 }
 repositories {
     mavenCentral()

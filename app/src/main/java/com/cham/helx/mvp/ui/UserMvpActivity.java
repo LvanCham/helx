@@ -92,19 +92,16 @@ public class UserMvpActivity extends BaseMVPActivity<UserPresenter>  implements 
     @Override
     public void initData() {
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         mXBanner.startAutoPlay();
     }
-
     @Override
     protected void onStop() {
         super.onStop();
         mXBanner.stopAutoPlay();
     }
-
 
     @Override
     public void onInject() {
@@ -112,10 +109,7 @@ public class UserMvpActivity extends BaseMVPActivity<UserPresenter>  implements 
                 .view(this)
                 .build()
                 .InjectAty(this);
-
         Log.e(TAG, "onInject: " );
-
-
     }
 
     @Override

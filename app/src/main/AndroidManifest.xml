@@ -37,7 +37,7 @@
             />
         <activity android:name=".mvvm.ui.activity.BehaviorActivity"
             android:label="测试behavior"/>
-        <activity android:name=".mvvm.test.AAAViewActivity"
+        <activity android:name=".mvvm.test.TestViewActivity"
             android:label="测试自定义View"
             />
     </application>
