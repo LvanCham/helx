@@ -57,10 +57,12 @@ public class TestViewActivity extends AppCompatActivity {
             mData.add("1");
         }
 
+        commonAdapter = new BaseMultipleAdapter<String>(this, R.layout.item_shop_car, mData2) {
+            @Override
+            public void convert(BaseViewHolder holder, String s, int pot) {
 
-
-
-        commonAdapter = new BaseMultipleAdapter<>(this,R.layout.item_shop_car,mData);
+            }
+        };
         commonAdapter.setEmptyView(R.layout.item_empty);
         commonAdapter.setHeadView(R.layout.item_head);
         commonAdapter.setFooterView(R.layout.item_home_footer);

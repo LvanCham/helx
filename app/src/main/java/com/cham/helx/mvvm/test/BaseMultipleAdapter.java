@@ -18,11 +18,11 @@ import java.util.List;
  * Date: 2019/12/1
  * Author: Cham
  */
-public class BaseMultipleAdapter <T> extends RecyclerView.Adapter<BaseViewHolder> {
+public abstract class BaseMultipleAdapter <T> extends RecyclerView.Adapter<BaseViewHolder> {
 
 
     private String TAG = "BaseMultipleAdapter";
-
+    private boolean isEmpty =true;
     private Context  mContext;
     //内容布局
     private int mContentLayoutIds;
@@ -84,9 +84,13 @@ public class BaseMultipleAdapter <T> extends RecyclerView.Adapter<BaseViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+        if(!mDatas.isEmpty()){
+            convert(holder, mDatas.get(position), position);
+        }
 
     }
 
+    public abstract void convert(BaseViewHolder holder, T t, int pot);
     @Override
     public int getItemCount() {
         int count = 0;
@@ -132,7 +136,7 @@ public class BaseMultipleAdapter <T> extends RecyclerView.Adapter<BaseViewHolder
             return  1;
         }
     }
-    private boolean isEmpty =true;
+
     public  void upData(List<T> datas){
         if (!mDatas.isEmpty()) {
             Log.e(TAG, "upData: 原来的数据不为空" );
