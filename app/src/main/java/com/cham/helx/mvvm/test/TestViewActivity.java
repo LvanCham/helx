@@ -77,7 +77,6 @@ public class TestViewActivity extends AppCompatActivity {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
 
-                Log.e(TAG, "onRefresh: "+mData.size() );
 
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -87,7 +86,7 @@ public class TestViewActivity extends AppCompatActivity {
                         for (int i = 0; i < 30; i++) {
                             mData.add("1");
                         }
-                        Log.e(TAG, "run: "+mData.size() );
+
                         commonAdapter.upData(mData);
                     }
                 },1000);

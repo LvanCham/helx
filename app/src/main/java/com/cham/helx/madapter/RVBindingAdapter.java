@@ -16,7 +16,7 @@ import java.util.List;
  * Date: 2019/10/23
  * Author: Cham
  */
-public abstract class RVBindingAdapter<T extends ViewDataBinding,D> extends RecyclerView.Adapter<BaseBindingVeiwHolder<T>> {
+public abstract class RVBindingAdapter<T extends ViewDataBinding,D> extends RecyclerView.Adapter<BaseBindingVeiwHolder> {
 
     protected List<D> mDatas;
     private Context mContext;
@@ -30,12 +30,12 @@ public abstract class RVBindingAdapter<T extends ViewDataBinding,D> extends Recy
 
     @NonNull
     @Override
-    public BaseBindingVeiwHolder<T> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BaseBindingVeiwHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return BaseBindingVeiwHolder.createHolder(mContext,parent, getItemLayout());
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseBindingVeiwHolder<T> holder, int position) {
+    public void onBindViewHolder(@NonNull BaseBindingVeiwHolder holder, int position) {
         onBindItem(holder,position);
     }
 

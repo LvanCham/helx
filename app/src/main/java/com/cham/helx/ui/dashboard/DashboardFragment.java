@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.GsonUtils;
 import com.cham.helx.R;
 import com.cham.helx.madapter.BaseViewHolder;
 import com.cham.helx.madapter.CommonAdapter;
@@ -26,7 +27,7 @@ import com.rxjava.rxlife.RxLife;
 import java.util.ArrayList;
 import java.util.List;
 
-import rxhttp.wrapper.param.RxHttp;
+
 
 public class DashboardFragment extends Fragment {
 
@@ -85,15 +86,6 @@ public class DashboardFragment extends Fragment {
                 textView.setText(s);
             }
         });
-
-        RxHttp.get("all.json").asObject(PoetryEntity.class)
-                .as(RxLife.asOnMain(this))
-                .subscribe(s ->{
-                    Log.e(TAG, "onViewCreated: "+ s.getContent());
-                    dashboardViewModel.setText(s.getContent());
-                },throwable -> {
-
-                });
 
         for (int i = 0; i <9 ; i++) {
             mData.add(i*90);

@@ -38,6 +38,7 @@ public class TestRcyAdapter extends RVBindingAdapter<ItemCourseNavBinding,Test> 
             @Override
             public void onClick(View v) {
                 onRcyAdapterclick.itemOnclick(position,mDatas);
+
             }
         });
 

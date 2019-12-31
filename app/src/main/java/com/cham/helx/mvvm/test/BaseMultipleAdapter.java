@@ -84,9 +84,8 @@ public abstract class BaseMultipleAdapter <T> extends RecyclerView.Adapter<BaseV
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
-        if(!mDatas.isEmpty()){
-            convert(holder, mDatas.get(position), position);
-        }
+        int viewType = holder.getItemViewType();
+
 
     }
 

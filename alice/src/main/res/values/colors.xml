@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorP1">#FFE2A0</color>
+    <color name="colorP2">#C9FFA0</color>
+    <color name="colorP3">#A0ECFF</color>
+    <color name="colorP4">#A0C0FF</color>
+    <color name="colorP5">#FFA0A0</color>
+    <color name="colorP6">#B0C9E5</color>
+    <color name="colorP7">#F5D488</color>
+    <color name="colorP8">#F5B488</color>
+    <color name="colorP9">#DC8BA3</color>
+    <color name="colorP10">#BE8BDC</color>
+
+
+    <color name="colorB1">#0F1E32</color>
+    <color name="colorB2">#5886AF</color>
+    <color name="colorB3">#E1F5FF</color>
+    <color name="colorB4">#EAC770</color>
+    <color name="colorB5">#B45B44</color>
+
+
+    <color name="colorB6">#212730</color>
+    <color name="colorB7">#4B5047</color>
+    <color name="colorB8">#787D85</color>
+    <color name="colorB9">#E6E6E6</color>
+
+    <!--银白色-->
+    <color name="colorYin">#e9e7ef</color>
+    <!--灰蓝色-->
+    <color name="colorHuiL">#a1afc9</color>
+    <!--花白-->
+    <color name="colorHuabai">#c2ccd0</color>
+    <color name="color_bc">#BCBCBC</color>
+    <color name="color_bc_60">#60BCBCBC</color>
+    <color name="color_6">#666666</color>
+    <color name="color_6_60">#60666666</color>
+    <color name="color_red_ef">#EF8D84</color>
+    <color name="color_blue_42">#4286F5</color>
+    <color name="color_red_DF">#DF473A</color>
+    <color name="color_green_34">#34A853</color>
+    <color name="color_or_F6">#F6BC10</color>
+    <color name="color_9">#999999</color>
+</resources>

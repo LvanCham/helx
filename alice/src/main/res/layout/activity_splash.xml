@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+
+        <variable
+            name="poetry"
+            type="com.cham.alice.entity.PoetryEntity" />
+
+        <variable
+            name="daily"
+            type="com.cham.alice.entity.DailyEnglishEntity" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/waveHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pt_0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/csl_bottom"
+        app:mwhStartColor="@color/colorP5"
+        app:mwhCloseColor="@color/colorAccent"
+        app:mwhColorAlpha="0.3"
+        app:mwhWaves="
+            70,25,1.4,1.4,-26
+            100,5,1.4,1.2,15
+            420,0,1.15,1,-10
+            520,10,1.7,1.5,20
+            220,0,1,1,-15"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_en"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/waveHeader"
+        app:layout_constraintBottom_toBottomOf="@id/waveHeader"
+        android:textSize="@dimen/pt_18"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@{daily.content}"
+        app:layout_constraintVertical_bias="0.4"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_ch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_en"
+        android:textSize="@dimen/pt_16"
+        android:gravity="center"
+        android:text="@{daily.note}"
+        android:layout_marginTop="@dimen/pt_10"
+        android:layout_marginStart="@dimen/pt_20"
+        android:layout_marginEnd="@dimen/pt_20"
+        />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/csl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pt_160"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_poetry_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{poetry.content}"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:textSize="@dimen/pt_17"
+            android:layout_marginTop="@dimen/pt_15"
+            android:textStyle="bold"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_wanandirod"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/pt_20"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/pt_18"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_countdown"
+            android:layout_width="@dimen/pt_50"
+            android:layout_height="@dimen/pt_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/pt_10"
+            android:layout_marginBottom="@dimen/pt_18"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/pt_15"
+            android:gravity="center"
+            android:onClick="@{listener}"
+            android:background="@drawable/btn_verification"
+            android:text="Wan"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

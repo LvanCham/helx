@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <selector>
+            <item android:state_pressed="true">
+                <shape android:shape="rectangle">
+                    <stroke android:color="@color/colorP10"
+                        android:width="@dimen/pt_1"/>
+                    <corners android:radius="@dimen/pt_80"/>
+                    <solid android:color="@color/colorP10"/>
+                </shape>
+            </item>
+            <item android:state_enabled="false">
+                <shape android:shape="rectangle">
+                    <gradient
+                        android:angle="0"
+                        android:startColor="@color/color_bc_60"
+                        android:endColor="@color/color_6_60"
+                        android:type="linear" />
+                    <corners android:radius="@dimen/pt_80"/>
+                </shape>
+            </item>
+            <item android:state_pressed="false">
+                <shape android:shape="rectangle">
+                    <stroke android:color="@color/color_bc_60" android:width="@dimen/pt_1"/>
+                    <corners android:radius="@dimen/pt_80"/>
+                    <solid android:color="@color/color_blue_42"/>
+                </shape>
+            </item>
+
+
+
+        </selector>
+
+
+
+
+
+    </item>
+</layer-list>

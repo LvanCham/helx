@@ -69,7 +69,6 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     }
 
 
-
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         convert(holder, mDatas.get(position), position);

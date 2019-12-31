@@ -39,7 +39,7 @@ public class VideoPlayActivity extends BaseActivity {
 
         XLog.e(AdaptScreenUtils.pt2Px(1080));
 
-        String source1 = "http://9890.vod.myqcloud.com/9890_4e292f9a3dd011e6b4078980237cc3d3.f20.mp4";
+        String source1 = "http://baobab.kaiyanapp.com/api/v1/playUrl?vid=161800&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss";
         videoPlayer.setUp(source1, true, "");
         //增加封面
         ImageView imageView = new ImageView(this);
