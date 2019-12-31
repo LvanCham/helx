@@ -1,14 +1,107 @@
 package com.cham.alice.appConstant
 
+import com.cham.alice.entity.FamousAndroidEntity
+
 
 /**
  * Hello World
  * Date: 2019/12/30
  * Author: Cham
+ * TOP Level 模式
  */
-
+//wanAndroid baseUrl
 const val HOST = "https://wanandroid.com/"
-
+//古诗词 一句
 const val POETRY ="https://api.gushi.ci/all.json"
-
+//金山词霸每日一句
 const val   DAILYENGLISH ="http://open.iciba.com/dsapi/1"
+//国外著名开发者
+val LIST_FAMOUS= listOf( FamousAndroidEntity("https://avatars3.githubusercontent.com/u/1342004?s=80",
+        "https://github.com/google",
+        "http://android-developers.blogspot.com/",
+        "Google Android Developers Blog"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/66577?s=80",
+                "https://github.com/JakeWharton",
+                "http://jakewharton.com/",
+                "ActionBarSherlock, Android-ViewPagerIndicator, Nine Old Androids, butterknife"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/82592?s=80",
+                "https://github.com/square",
+                "http://square.github.io/",
+                "okhttp, fest-android, android-times-square, picasso, dagger, spoon"),
+        FamousAndroidEntity("https://avatars3.githubusercontent.com/u/227486?s=80",
+                "https://github.com/chrisbanes",
+                "http://chris.banes.me/",
+                "ActionBar-PullToRefresh, PhotoView, Android-BitmapCache, Android-PullToRefresh"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/1269143?s=80",
+                "https://github.com/jfeinstein10",
+                "http://jeremyfeinstein.com/",
+                "SlidingMenu, JazzyViewPager"),
+        FamousAndroidEntity("https://avatars3.githubusercontent.com/u/1223348?s=80",
+                "https://github.com/nostra13",
+                "http://nostra13android.blogspot.com/",
+                "Android-Universal-Image-Loader"),
+        FamousAndroidEntity("https://avatars3.githubusercontent.com/u/73924?s=80",
+                "https://github.com/koush",
+                "http://koush.com/",
+                "Superuser, AndroidAsync, UrlImageViewHelper"),
+        FamousAndroidEntity("https://avatars2.githubusercontent.com/u/549365?s=80",
+                "https://github.com/SimonVT",
+                "http://simonvt.net/",
+                " android-menudrawer, MessageBar"),
+        FamousAndroidEntity("https://avatars1.githubusercontent.com/u/92794?s=80",
+                "https://github.com/cyrilmottier",
+                "http://cyrilmottier.com/",
+                "  \tGreenDroid, Polaris"),
+        FamousAndroidEntity("https://avatars2.githubusercontent.com/u/1525924?s=80",
+                "https://github.com/emilsjolander",
+                "http://emilsjolander.se/",
+                " \tStickyListHeaders, sprinkles, android-FlipView"),
+        FamousAndroidEntity("https://avatars1.githubusercontent.com/u/104009?s=80",
+                "https://github.com/loopj",
+                "http://loopj.com",
+                " \tandroid-async-http"),
+        FamousAndroidEntity("https://avatars2.githubusercontent.com/u/2700015?s=80",
+                "https://github.com/ManuelPeinado",
+                "",
+                "FadingActionBar, GlassActionBar, RefreshActionItem, QuickReturnHeader"),
+        FamousAndroidEntity("https://avatars2.githubusercontent.com/u/242242?s=80",
+                "https://github.com/greenrobot",
+                "http://greenrobot.de/",
+                "greenDAO, EventBus"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/175697?s=80",
+                "https://github.com/jgilfelt",
+                "http://jeffgilfelt.com",
+                "android-mapviewballoons, android-viewbadger, android-actionbarstylegenerator, android-sqlite-asset-helper"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/100155?s=80",
+                "https://github.com/romannurik",
+                "http://roman.nurik.net/",
+                " muzei, Android-SwipeToDismiss"),
+        FamousAndroidEntity("https://avatars1.githubusercontent.com/u/4429434?s=80",
+                "https://github.com/flavienlaurent",
+                "http://www.flavienlaurent.com",
+                "NotBoringActionBar, datetimepicker, discrollview"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/2583078?s=80",
+                "https://github.com/gabrielemariotti",
+                "http://gmariotti.blogspot.it",
+                "cardslib, colorpickercollection"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/823858?s=80",
+                "https://github.com/sephiroth74",
+                "http://www.sephiroth.it/",
+                "ImageViewZoom, HorizontalVariableListView, AndroidWheel, purePDF"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/869684?s=80",
+                "https://github.com/romainguy",
+                "http://www.curious-creature.org",
+                "ViewServer"),
+        FamousAndroidEntity("https://avatars1.githubusercontent.com/u/671378?s=80",
+                "https://github.com/kevinsawicki",
+                "https://twitter.com/kevinsawicki",
+                "http-request"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/1167793?s=80",
+                "https://github.com/chrisjenx",
+                "http://about.me/chris.jenkins",
+                "Calligraphy, ParallaxScrollView"),
+        FamousAndroidEntity("https://avatars0.githubusercontent.com/u/69631?v=3&s=80",
+                "https://github.com/facebook",
+                "https://code.facebook.com/mobile/",
+                "buck"))
+

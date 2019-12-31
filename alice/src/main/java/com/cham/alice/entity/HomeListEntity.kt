@@ -5,37 +5,46 @@ package com.cham.alice.entity
  * Date: 2019/12/31
  * Author: Cham
  */
-data class HomeListEntity(
-    val apkLink: String,
-    val audit: Int,
-    val author: String,
-    val chapterId: Int,
-    val chapterName: String,
-    val collect: Boolean,
-    val courseId: Int,
-    val desc: String,
-    val envelopePic: String,
-    val fresh: Boolean,
-    val id: Int,
-    val link: String,
-    val niceDate: String,
-    val niceShareDate: String,
-    val origin: String,
-    val prefix: String,
-    val projectLink: String,
-    val publishTime: String,
-    val selfVisible: Int,
-    val shareDate: Long,
-    val shareUser: String,
-    val superChapterId: Int,
-    val superChapterName: String,
-    val tags: List<Tag>,
-    val title: String,
-    val type: Int,
-    val userId: Int,
-    val visible: Int,
-    val zan: Int
-)
+ class HomeListEntity{
+    var apkLink: String=""
+    var audit: Int=0
+    var author: String=""
+    get() {
+       return  if(field.isNotEmpty()){
+           field
+        }else{
+            "查无此人"
+        }
+    }
+    var chapterId: Int=0
+    var chapterName: String=""
+    var collect: Boolean=false
+    var courseId: Int=0
+    var desc: String=""
+    var envelopePic: String=""
+    var fresh: Boolean=false
+    var id: Int=0
+    var link: String=""
+    var niceDate: String=""
+    var niceShareDate: String=""
+    var origin: String=""
+    var prefix: String=""
+    var projectLink: String=""
+    var publishTime: String=""
+    var selfVisible: Int=0
+    var shareDate: Long=0
+    var shareUser: String=""
+    var superChapterId: Int=0
+    var superChapterName: String=""
+    var tags: List<Tag> = mutableListOf()
+    var title: String=""
+    var type: Int=0
+    var userId: Int=0
+    var visible: Int=0
+    var zan: Int =0
+}
+
+
 
 data class Tag(
         val name: String,

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">爱丽丝没有仙境</string>
 
+    <string name="str_author">作者：%1s</string>
+
     <string name="str_wanandirod"><font color="#000000">Wan</font><font color="#4286F5">A</font><font color="#DF473A">n</font><font color="#34A853">d</font><font color="#F6BC10">r</font><font color="#4286F5">o</font><font color="#BE8BDC">i</font><font color="#4286F5">d</font></string>
     <string name="str_andirod"><font color="#4286F5">A</font><font color="#DF473A">n</font><font color="#34A853">d</font><font color="#F6BC10">r</font><font color="#4286F5">o</font><font color="#BE8BDC">i</font><font color="#4286F5">d</font></string>
 </resources>
