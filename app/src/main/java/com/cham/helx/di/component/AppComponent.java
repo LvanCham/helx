@@ -34,7 +34,6 @@ import okhttp3.OkHttpClient;
 @Singleton
 @Component(modules = {AppModule.class})
 public interface AppComponent {
-
     /**
      * 這些都是要去Module 去實現提供。 或者參數提供   下面參數提供
      * */

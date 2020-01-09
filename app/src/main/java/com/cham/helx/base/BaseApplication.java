@@ -44,10 +44,7 @@ import rxhttp.wrapper.param.RxHttp;
  */
 public class BaseApplication extends Application {
 
-
     private String TAG ="BaseApplication";
-
-    private ViewModelStore viewModelStore ;
 
     private long startWorkTimeMillis =0;
     private Handler handler = new Handler(Looper.getMainLooper());
@@ -108,6 +105,8 @@ public class BaseApplication extends Application {
                 })
                 .install();
     }
+
+
     private void HandlerARN(){
         Looper.getMainLooper().setMessageLogging(new Printer() {
             @Override

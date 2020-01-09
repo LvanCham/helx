@@ -50,8 +50,7 @@ public abstract class AppModule {
     @Provides
     static Gson provideGson() {
         GsonBuilder builder = new GsonBuilder();
-        builder
-                .serializeNulls()//支持序列化值为 null 的参数
+        builder.serializeNulls()//支持序列化值为 null 的参数
                 .enableComplexMapKeySerialization();//支持将序列化 key 为 Object 的 Map, 默认只能序列化 key 为 String 的 Map
         return builder.create();
     }

@@ -21,12 +21,12 @@ public abstract class BaseMvvmActivity<T extends ViewDataBinding>  extends Suppo
     public T binding ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,onLayout());
-        binding.setLifecycleOwner(this);
-        initView();
-    }
 
+   super.onCreate(savedInstanceState);
+    binding = DataBindingUtil.setContentView(this,onLayout());
+        binding.setLifecycleOwner(this);
+    initView();
+}
     public abstract int onLayout();
 
     public abstract void initView();

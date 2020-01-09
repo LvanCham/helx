@@ -24,8 +24,7 @@ class MainActivity :BaseActivity<NoViewModel, ActivityMainBinding>() {
     override fun initLayout(): Int = R.layout.activity_main
     override fun initView(savedInstanceState: Bundle?) {
         BarUtils.setStatusBarLightMode(this, true)
-
-        switchFragment(homeFragment).commit()
+        addfragment(homeFragment)
         binding.navView.run {
             itemIconTintList = null
             setOnNavigationItemSelectedListener {
@@ -41,14 +40,15 @@ class MainActivity :BaseActivity<NoViewModel, ActivityMainBinding>() {
                 }
                 true
             }
-
         }
     }
 
-
-
-
-
+    fun addfragment(targetFragment : Fragment){
+        currentFragment =targetFragment
+        if(!currentFragment.isAdded){
+            supportFragmentManager.beginTransaction().add(R.id.fl_content, currentFragment,currentFragment::class.java.name).commitNow()
+        }
+    }
 
 
     fun switchFragment(targetFragment : Fragment): FragmentTransaction {
@@ -63,6 +63,5 @@ class MainActivity :BaseActivity<NoViewModel, ActivityMainBinding>() {
         }
         currentFragment = targetFragment
         return   transaction
-
     }
 }

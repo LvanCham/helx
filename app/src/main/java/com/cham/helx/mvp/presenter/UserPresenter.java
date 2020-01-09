@@ -41,10 +41,8 @@ public class UserPresenter  extends  BasePresenter<UserContract.Model, UserContr
 
     public  void dosth(){
         //加载数据什么的
-
-
         mModel.getPoerty()
-                . subscribeOn(io())
+                .subscribeOn(io())
                 .observeOn(mainThread())
                 .subscribe(poetryEntity -> {
                     mRootView.ShowMsg(poetryEntity.getContent());
